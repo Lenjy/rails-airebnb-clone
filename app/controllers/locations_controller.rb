@@ -1,19 +1,22 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_location, only: [:show, :edit, :update, :destroy]
 
   def new
     @shoe = Shoe.find(params[:shoe_id])
     @location = Location.new
+    authorize @location 
   end
 
   def show
-    @location = Location.find(params[:id])
+    
   end
 
   def create
     @shoe = Shoe.find(params[:shoe_id])
     @location = Location.new(location_params)
     @location.shoe = @shoe
+    authorize @location     
     if @shoe.save
       redirect_to shoe_path(@shoe)
     else
@@ -22,17 +25,14 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    @location = Location.find(params[:id])
   end
 
   def update
-    @location = Location.find(params[:id])
     @location.update(location_params)
     redirect_to location_path(@location)
   end
 
   def destroy
-    @location = Location.find(params[:id])
     @Location.destroy
     redirect_to dashboard_path
   end
@@ -41,6 +41,11 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location).permit(:shoe_id, :user_id, :location_pricing, :date_end, :date_beginning)
+  end
+
+  def find_location
+    @location = Location.find(params[:id])
+    authorize @location
   end
 
 end

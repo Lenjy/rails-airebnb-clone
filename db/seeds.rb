@@ -8,6 +8,8 @@
 require_relative '../app/models/category'
 require_relative '../app/models/shoe'
 
+Category.destroy_all
+Shoe.destroy_all
 
 Category.create(name: "Sport")
 Category.create(name: "Sneakers")
@@ -207,7 +209,7 @@ Category.create(name: "Work Shoes")
 Category.create(name: "Wrestling Shoes")
 Category.create(name: "Zip Up Boots")
 
-puts "Created #{Category.size} categories from seeds.rb"
+puts "Created #{Category.all.size} categories from seeds.rb"
 
 
 15.times {
@@ -216,7 +218,7 @@ puts "Created #{Category.size} categories from seeds.rb"
     description: "This shoe is really cool, it's so nice and comes from seeds.rb",
     brand: ["Nike", "Adidas", "Reebok", "Asics", "Clarks"].sample,
     model: "whatever",
-    purchasing_date: Date.now(),
+    purchasing_date: Date.new,
     color: ['red', 'yellow', 'green', 'white'].sample,
     daily_pricing: rand(4..50)
   )
