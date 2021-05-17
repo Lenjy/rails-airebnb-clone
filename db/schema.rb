@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_142635) do
+
+ActiveRecord::Schema.define(version: 2021_05_17_142655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_142635) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
   create_table "link_to_cats", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "shoe_id", null: false
@@ -28,6 +30,17 @@ ActiveRecord::Schema.define(version: 2021_05_17_142635) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_link_to_cats_on_category_id"
     t.index ["shoe_id"], name: "index_link_to_cats_on_shoe_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.date "date_beginning"
+    t.date "date_end"
+    t.integer "location_pricing"
+    t.bigint "shoe_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shoe_id"], name: "index_locations_on_shoe_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "shoes", force: :cascade do |t|
@@ -62,5 +75,9 @@ ActiveRecord::Schema.define(version: 2021_05_17_142635) do
 
   add_foreign_key "link_to_cats", "categories"
   add_foreign_key "link_to_cats", "shoes"
+
+  add_foreign_key "locations", "shoes"
+  add_foreign_key "locations", "users"
+  
   add_foreign_key "shoes", "users"
 end
