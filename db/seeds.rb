@@ -8,6 +8,7 @@
 require_relative '../app/models/category'
 require_relative '../app/models/shoe'
 
+
 Category.create(name: "Sport")
 Category.create(name: "Sneakers")
 Category.create(name: "Slippers")
