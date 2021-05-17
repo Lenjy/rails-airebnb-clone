@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2021_05_17_142655) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
   create_table "link_to_cats", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "shoe_id", null: false
