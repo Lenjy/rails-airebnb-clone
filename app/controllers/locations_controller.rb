@@ -18,8 +18,14 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     @location.shoe = @shoe
     authorize @location
-    if @shoe.save
-      redirect_to shoe_path(@shoe)
+
+    @location.date_beginning = Date.new(location_params["date_beginning(1i)"].to_i, location_params["date_beginning(2i)"].to_i, location_params["date_beginning(3i)"].to_i) 
+    @location.date_end = Date.new(location_params["date_end(1i)"].to_i, location_params["date_end(2i)"].to_i, location_params["date_end(3i)"].to_i)
+    location_period = @location.date_end - @location.date_beginning
+    pricing = @shoe.daily_pricing * location_period  
+    @location.user = current_user
+    if @location.save
+      redirect_to dashboard_index_path
     else
       render :new
     end
