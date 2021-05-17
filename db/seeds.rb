@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require_relative '../models/category'
+require_relative '../app/models/category'
+require_relative '../app/models/shoe'
 
 Category.create(name: "Sport")
 Category.create(name: "Sneakers")
@@ -204,3 +205,20 @@ Category.create(name: "Womens Boots")
 Category.create(name: "Work Shoes")
 Category.create(name: "Wrestling Shoes")
 Category.create(name: "Zip Up Boots")
+
+puts "Created #{Category.size} categories from seeds.rb"
+
+
+15.times {
+  Shoe.create(
+    title: "Cool shoe from seeds.rb",
+    description: "This shoe is really cool, it's so nice and comes from seeds.rb",
+    brand: ["Nike", "Adidas", "Reebok", "Asics", "Clarks"].sample,
+    model: "whatever",
+    purchasing_date: Date.now(),
+    color: ['red', 'yellow', 'green', 'white'].sample,
+    daily_pricing: rand(4..50)
+  )
+}
+
+puts "Created 15 shoes from seeds.rb"
