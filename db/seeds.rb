@@ -16,7 +16,6 @@ Category.create(name: "Sandales")
 Category.create(name: "Mules")
 Category.create(name: "Boots")
 Category.create(name: "Bottines")
-Category.create(name: 
 Category.create(name: "Aerobic Shoes")
 Category.create(name: "Airport Friendly Shoes")
 Category.create(name: "Aldo Men's Shoes")
@@ -47,161 +46,161 @@ Category.create(name: "Brown Riding Boots")
 Category.create(name: "Buckle Boots")
 Category.create(name: "Burberry Rain Boots")
 Category.create(name: "Burgundy Shoes")
-"Calf Boots"
-"Calvin Klein Heels"
-"Camper Shoes"
-"Canvas Shoes"
-"Canvas Slip On Shoes"
-"Cap Toe Shoes"
-"Chaco Boots"
-"Chef Shoes"
-"Chukka Boots"
-"Climbing Shoes"
-"Combat Boots"
-"Comfort Shoes"
-"Cowboy Boots"
-"Cycling Shoes"
-"Dan Post Boots"
-"Dansko Shoes"
-"Deck Shoes"
-"Denim Shoes"
-"Designer Evening Shoes"
-"Designer Shoes"
-"Diabetic Shoes"
-"Dress Shoes"
-"Drivers Shoes"
-"Durango Boots"
-"Earth Boots"
-"Eastland Shoes"
-"Eco Friendly Shoes"
-"Electrical Boots"
-"Emu Boots"
-"Equestrian Boots"
-"Extra Wide Calf Boots"
-"Fashion Boots"
-"Fashion Shoes"
-"Fitness Shoes"
-"Flat Ankle Boots"
-"Flat Shoes"
-"Fleece Lined Boots"
-"Formal Shoes"
-"Fringe Boots"
-"Frye Boots"
-"Fur Boots"
-"Furry Boots"
-"Gladiator Heels"
-"Glitter Pumps"
-"Glitter Shoes"
-"Gold Heels"
-"Gold Shoes"
-"Golf Shoes"
-"Grey Ankle Boots"
-"Guess Boots"
-"Gym Shoes"
-"Harness Boots"
-"High Heel Winter Boots"
-"High Top Shoes"
-"Hospital Shoes"
-"Hunter Boots"
-"Infant Shoes"
-"Jelly Shoes"
-"Keen Hiking Boots"
-"Khaki Boots"
-"Kitten Heels"
-"Lace Up Boots"
-"Leather Boots"
-"Light Up Shoes"
-"Low Heel Boots"
-"Lug Boots"
-"Lug Sole Boots"
-"Mary Jane Shoes"
-"Matisse Boots"
-"Michael Kors"
-"Mens Boots"
-"Minnetonka Boots"
-"Moc Toe Shoes"
-"Motorcycle Boots"
-"Mules"
-"Narrow Size Boots"
-"Navy Pumps"
-"Neutral Pronation Shoes
-Nubuck Shoes
-Nurse Shoes
-Orange Shoes
-Orthotic Shoes
-Over The Knee Boots
-Overpronation Shoes
-Patagonia Shoes
-Patent Leather Boots
-Patent Leather Shoes
-Pewter Heels
-Pewter Shoes
-Pink Pumps
-Platform Shoes
-Polo Boots
-Prom Shoes
-Purple Pumps
-Red Heels
-Red Kitten Heels
-Red Knee Boots
-Red Leather Boots
-Red Mary Jane Shoes
-Red Patent Leather Pumps
-Red Pumps
-Red Shoes
-Report Shoes
-Retro Shoes
-Rubber Boots
-Rubber Overshoes
-Running Shoes
-Saddle Shoes
-Sailing Shoes
-Satin Shoes
-Seychelles Shoes
-Shearling Boots
-Silver Glitter Pumps
-Silver Heels
-Silver Pumps
-Skateboard Shoes
-Slip On Shoes
-Slipper Boots
-Slouch Boots
-Snow Boots
-Soccer Cleats
-Sorel Boots
-Steel Toe Boots
-Steve Madden Boots
-Strappy Heels
-Stretch Boots
-Studded Boots
-Studded Heels
-Suede Boots
-Suede Pumps
-Summer Shoes
-Tan Boots
-Taupe Wedge Shoes
-Tennis Shoes
-Thigh Boots
-Thigh High Black Boots
-Thigh High Boots
-Toddler Shoes
-Track Shoes
-Trail Shoes
-Two Tone Riding Boots
-Uggs
-Vegan Shoes
-Vegetarian Shoes
-Water Shoes
-Waterproof Boots
-Waterproof Shoes
-Wedge Boots
-Western Boots
-White Strap Heels
-Wide Boots
-Wide Calf Boots
-Wide Shoes
-Winter Boots
-Womens Boots
-Work Shoes
-Wrestling Shoes
-Zip Up Boots"
+Category.create(name: "Calf Boots")
+Category.create(name: "Calvin Klein Heels")
+Category.create(name: "Camper Shoes")
+Category.create(name: "Canvas Shoes")
+Category.create(name: "Canvas Slip On Shoes")
+Category.create(name: "Cap Toe Shoes")
+Category.create(name: "Chaco Boots")
+Category.create(name: "Chef Shoes")
+Category.create(name: "Chukka Boots")
+Category.create(name: "Climbing Shoes")
+Category.create(name: "Combat Boots")
+Category.create(name: "Comfort Shoes")
+Category.create(name: "Cowboy Boots")
+Category.create(name: "Cycling Shoes")
+Category.create(name: "Dan Post Boots")
+Category.create(name: "Dansko Shoes")
+Category.create(name: "Deck Shoes")
+Category.create(name: "Denim Shoes")
+Category.create(name: "Designer Evening Shoes")
+Category.create(name: "Designer Shoes")
+Category.create(name: "Diabetic Shoes")
+Category.create(name: "Dress Shoes")
+Category.create(name: "Drivers Shoes")
+Category.create(name: "Durango Boots")
+Category.create(name: "Earth Boots")
+Category.create(name: "Eastland Shoes")
+Category.create(name: "Eco Friendly Shoes")
+Category.create(name: "Electrical Boots")
+Category.create(name: "Emu Boots")
+Category.create(name: "Equestrian Boots")
+Category.create(name: "Extra Wide Calf Boots")
+Category.create(name: "Fashion Boots")
+Category.create(name: "Fashion Shoes")
+Category.create(name: "Fitness Shoes")
+Category.create(name: "Flat Ankle Boots")
+Category.create(name: "Flat Shoes")
+Category.create(name: "Fleece Lined Boots")
+Category.create(name: "Formal Shoes")
+Category.create(name: "Fringe Boots")
+Category.create(name: "Frye Boots")
+Category.create(name: "Fur Boots")
+Category.create(name: "Furry Boots")
+Category.create(name: "Gladiator Heels")
+Category.create(name: "Glitter Pumps")
+Category.create(name: "Glitter Shoes")
+Category.create(name: "Gold Heels")
+Category.create(name: "Gold Shoes")
+Category.create(name: "Golf Shoes")
+Category.create(name: "Grey Ankle Boots")
+Category.create(name: "Guess Boots")
+Category.create(name: "Gym Shoes")
+Category.create(name: "Harness Boots")
+Category.create(name: "High Heel Winter Boots")
+Category.create(name: "High Top Shoes")
+Category.create(name: "Hospital Shoes")
+Category.create(name: "Hunter Boots")
+Category.create(name: "Infant Shoes")
+Category.create(name: "Jelly Shoes")
+Category.create(name: "Keen Hiking Boots")
+Category.create(name: "Khaki Boots")
+Category.create(name: "Kitten Heels")
+Category.create(name: "Lace Up Boots")
+Category.create(name: "Leather Boots")
+Category.create(name: "Light Up Shoes")
+Category.create(name: "Low Heel Boots")
+Category.create(name: "Lug Boots")
+Category.create(name: "Lug Sole Boots")
+Category.create(name: "Mary Jane Shoes")
+Category.create(name: "Matisse Boots")
+Category.create(name: "Michael Kors")
+Category.create(name: "Mens Boots")
+Category.create(name: "Minnetonka Boots")
+Category.create(name: "Moc Toe Shoes")
+Category.create(name: "Motorcycle Boots")
+Category.create(name: "Mules")
+Category.create(name: "Narrow Size Boots")
+Category.create(name: "Navy Pumps")
+Category.create(name: "Neutral Pronation Shoes")
+Category.create(name: "Nubuck Shoes")
+Category.create(name: "Nurse Shoes")
+Category.create(name: "Orange Shoes")
+Category.create(name: "Orthotic Shoes")
+Category.create(name: "Over The Knee Boots")
+Category.create(name: "Overpronation Shoes")
+Category.create(name: "Patagonia Shoes")
+Category.create(name: "Patent Leather Boots")
+Category.create(name: "Patent Leather Shoes")
+Category.create(name: "Pewter Heels")
+Category.create(name: "Pewter Shoes")
+Category.create(name: "Pink Pumps")
+Category.create(name: "Platform Shoes")
+Category.create(name: "Polo Boots")
+Category.create(name: "Prom Shoes")
+Category.create(name: "Purple Pumps")
+Category.create(name: "Red Heels")
+Category.create(name: "Red Kitten Heels")
+Category.create(name: "Red Knee Boots")
+Category.create(name: "Red Leather Boots")
+Category.create(name: "Red Mary Jane Shoes")
+Category.create(name: "Red Patent Leather Pumps")
+Category.create(name: "Red Pumps")
+Category.create(name: "Red Shoes")
+Category.create(name: "Report Shoes")
+Category.create(name: "Retro Shoes")
+Category.create(name: "Rubber Boots")
+Category.create(name: "Rubber Overshoes")
+Category.create(name: "Running Shoes")
+Category.create(name: "Saddle Shoes")
+Category.create(name: "Sailing Shoes")
+Category.create(name: "Satin Shoes")
+Category.create(name: "Seychelles Shoes")
+Category.create(name: "Shearling Boots")
+Category.create(name: "Silver Glitter Pumps")
+Category.create(name: "Silver Heels")
+Category.create(name: "Silver Pumps")
+Category.create(name: "Skateboard Shoes")
+Category.create(name: "Slip On Shoes")
+Category.create(name: "Slipper Boots")
+Category.create(name: "Slouch Boots")
+Category.create(name: "Snow Boots")
+Category.create(name: "Soccer Cleats")
+Category.create(name: "Sorel Boots")
+Category.create(name: "Steel Toe Boots")
+Category.create(name: "Steve Madden Boots")
+Category.create(name: "Strappy Heels")
+Category.create(name: "Stretch Boots")
+Category.create(name: "Studded Boots")
+Category.create(name: "Studded Heels")
+Category.create(name: "Suede Boots")
+Category.create(name: "Suede Pumps")
+Category.create(name: "Summer Shoes")
+Category.create(name: "Tan Boots")
+Category.create(name: "Taupe Wedge Shoes")
+Category.create(name: "Tennis Shoes")
+Category.create(name: "Thigh Boots")
+Category.create(name: "Thigh High Black Boots")
+Category.create(name: "Thigh High Boots")
+Category.create(name: "Toddler Shoes")
+Category.create(name: "Track Shoes")
+Category.create(name: "Trail Shoes")
+Category.create(name: "Two Tone Riding Boots")
+Category.create(name: "Uggs")
+Category.create(name: "Vegan Shoes")
+Category.create(name: "Vegetarian Shoes")
+Category.create(name: "Water Shoes")
+Category.create(name: "Waterproof Boots")
+Category.create(name: "Waterproof Shoes")
+Category.create(name: "Wedge Boots")
+Category.create(name: "Western Boots")
+Category.create(name: "White Strap Heels")
+Category.create(name: "Wide Boots")
+Category.create(name: "Wide Calf Boots")
+Category.create(name: "Wide Shoes")
+Category.create(name: "Winter Boots")
+Category.create(name: "Womens Boots")
+Category.create(name: "Work Shoes")
+Category.create(name: "Wrestling Shoes")
+Category.create(name: "Zip Up Boots")
