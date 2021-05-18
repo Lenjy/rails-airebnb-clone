@@ -221,7 +221,7 @@ puts "Created #{User.all.size} user from seeds.rb"
     color: ['red', 'yellow', 'green', 'white'].sample,
     daily_pricing: rand(4..50),
     gender: ["Male", "Female", "For both"].sample,
-    shoe_size: rand(34..50) 
+    shoe_size: rand(34..50)
   )
 }
 
