@@ -47,7 +47,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:shoe_id, :user_id, :location_pricing, :date_end, :date_beginning)
+    params.require(:location).permit(:shoe_id, :user_id, :location_pricing, :date_end, :date_beginning, :photo)
   end
 
   def find_location

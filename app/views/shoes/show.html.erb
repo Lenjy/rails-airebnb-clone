@@ -22,6 +22,7 @@
     <%= simple_form_for [ @shoe, @location ] do |f| %>
       <%= f.input :date_beginning %>
       <%= f.input :date_end %>
+      <%= f.input :photo, as: :file %>
       <%= f.submit "Submit location demande", class: "btn btn-primary" %>
     <% end %>
   </div>

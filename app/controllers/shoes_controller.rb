@@ -44,7 +44,7 @@ class ShoesController < ApplicationController
   private
 
   def shoe_params
-    params.require(:shoe).permit(:title, :description, :brand, :model, :purchasing_date, :color, :daily_pricing, :shoe_size, :gender)
+    params.require(:shoe).permit(:title, :description, :brand, :model, :purchasing_date, :color, :daily_pricing, :shoe_size, :gender, :photo)
   end
 
   def find_shoe
