@@ -1,7 +1,8 @@
 .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    margin-top: 50px;
   }
 
   .card-trip {
@@ -44,19 +45,50 @@
     width: 40px;
   }
 
-  .card-category {
+.card-category {
   background-size: cover;
   background-position: center;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  height: 224px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  color: black;
   font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  // font-weight: bold;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    .card-category-box {
+      display: flex;
+    }
+    .card-category-price {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+    .card-category-infos {
+      margin: 16px 16px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    p {
+      font-size: 14px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    img {
+      position: relative;
+      top: -16px;
+      right: 16px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    i {
+      color: rgb(28, 221, 135);
+    }
   }
 
   // Smallest device
@@ -83,17 +115,17 @@
   // Large devices (desktops, 992px and up)
   @media (min-width: 992px) {
     .cards {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
   // Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1200px) {
     .cards {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
-  
+
   .card-product {
     overflow: hidden;
     height: 120px;
@@ -102,19 +134,19 @@
     display: flex;
     align-items: center;
   }
-  
+
   .card-product img {
     height: 100%;
     width: 120px;
     object-fit: cover;
   }
-  
+
   .card-product h2 {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
-  
+
   .card-product p {
     font-size: 12px;
     line-height: 1.4;
@@ -122,7 +154,7 @@
     margin-bottom: 0;
     margin-top: 8px;
   }
-  
+
   .card-product .card-product-infos {
     padding: 16px;
   }
@@ -130,4 +162,4 @@
   .show{
     justify-content: space-around;
   }
- 
+

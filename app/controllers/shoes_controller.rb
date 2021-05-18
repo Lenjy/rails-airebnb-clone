@@ -4,7 +4,7 @@ class ShoesController < ApplicationController
   before_action :find_shoe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @shoes = policy_scope(Shoe).order(created: :desc)
+    @shoes = policy_scope(Shoe)
     @shoe = Shoe.new
   end
 

@@ -37,13 +37,8 @@ puts "Created #{User.all.size} user from seeds.rb"
     purchasing_date: Date.new,
     color: ['red', 'yellow', 'green', 'white'].sample,
     daily_pricing: rand(4..50),
-<<<<<<< HEAD
-    gender: "Male",
-    shoe_size: 40
-=======
     gender: ["Male", "Female", "For both"].sample,
-    shoe_size: rand(34..50) 
->>>>>>> master
+    shoe_size: rand(34..50)
   )
 }
 
