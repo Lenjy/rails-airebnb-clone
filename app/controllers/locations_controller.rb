@@ -1,22 +1,23 @@
 class LocationsController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user! # Temporaire: Pour tester les vues
+  # before_action :authenticate_user!
   before_action :find_location, only: [:show, :edit, :update, :destroy]
 
   def new
     @shoe = Shoe.find(params[:shoe_id])
     @location = Location.new
-    authorize @location 
+    authorize @location
   end
 
   def show
-    
+
   end
 
   def create
     @shoe = Shoe.find(params[:shoe_id])
     @location = Location.new(location_params)
     @location.shoe = @shoe
-    authorize @location     
+    authorize @location
     if @shoe.save
       redirect_to shoe_path(@shoe)
     else
