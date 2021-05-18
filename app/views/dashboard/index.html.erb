@@ -1,93 +1,106 @@
-<div class="container">
-  <div class="main-body d-flex">
-    <div class="card-body">
-      <div class="d-flex flex-column align-items-center text-center"> 
-        <%# <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> %>
-        <img class="avatar" alt="avatar-large" width="150" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-        <div class="mt-3">
-          <h4>UserName</h4>
-          <p class="text-secondary mb-1">Description of a shoe's lover</p>
-          <%# <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>  %>
-          <%# <a class="btn btn-flat" href="#">Edit</a> %>
-          <%= link_to "Edit", edit_user_registration_path(@user), class: "btn btn-flat" %>
+<div class="container d-flex">
+  <div>
+    <div class="main-body d-flex">
+      <div class="card-body">
+        <div class="d-flex flex-column align-items-center text-center">
+          <%# <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> %>
+          <img class="avatar" alt="avatar-large" width="150" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+          <div class="mt-3">
+            <h4>UserName</h4>
+            <p class="text-secondary mb-1">Description of a shoe's lover</p>
+            <%# <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>  %>
+            <%# <a class="btn btn-flat" href="#">Edit</a> %>
+            <%= link_to "Edit", edit_user_registration_path(@user), class: "btn btn-flat" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Full Name</h6>
+          </div>
+          <div class="col-sm-9 text-secondary"><%= current_user.first_name %> <%= current_user.last_name %></div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Email</h6>
+          </div>
+          <div class="col-sm-9 text-secondary"><%= current_user.email %></div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Phone</h6>
+          </div>
+          <div class="col-sm-9 text-secondary"><%= current_user.telephone_number %>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Number of shoes</h6>
+          </div>
+          <div class="col-sm-9 text-secondary"><%= current_user.shoes.count%></div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Address</h6>
+          </div>
+          <div class="col-sm-9 text-secondary"><%= current_user.address %></div>
         </div>
       </div>
     </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-sm-3">
-          <h6 class="mb-0">Full Name</h6>
-        </div>
-        <div class="col-sm-9 text-secondary"><%= current_user.first_name %> <%= current_user.last_name %></div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <h6 class="mb-0">Email</h6>
-        </div>
-        <div class="col-sm-9 text-secondary"><%= current_user.email %></div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <h6 class="mb-0">Phone</h6>
-        </div>
-        <div class="col-sm-9 text-secondary"><%= current_user.telephone_number %>
+    <hr>
+    <div class="d-flex show">
+      <div class="m-3">
+        <h3 class="text-center">My shoes</h3>
+        <div>
+          <% current_user.shoes.each do |shoe| %>
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <h2><%= shoe.title %></h2>
+              <p><%= shoe.description %></p>
+            </div>
+          </div>
+          <% end  %>
         </div>
       </div>
-      <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <h6 class="mb-0">Number of shoes</h6>
+      <div class="m-3">
+        <h3 class="text-center">My location</h3>
+        <div>
+          <% current_user.locations.each do |location| %>
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <h2><%= location.title %></h2>
+              <p><%= location.description %></p>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-9 text-secondary"><%= current_user.shoes.count%></div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <h6 class="mb-0">Address</h6>
-        </div>
-        <div class="col-sm-9 text-secondary"><%= current_user.address %></div>
       </div>
     </div>
   </div>
-  <hr>
-  <div class="d-flex show">
-    <div>
-      <h3 class="text-center">My shoes</h3>
-      <div>
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
-          </div>
-        </div>
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
-          </div>
-        </div>
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h3 class="text-center">My location</h3>
-      <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
-          </div>
-        </div>
+  <div>
+    <div class="form-shoe m-20 p-3">
+      <%= simple_form_for([@shoe]) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :brand %>
+        <%= f.input :model %>
+        <%= f.input :color %>
+        <%= f.input :purchasing_date, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12, discard_day: true,
+                              order: [:month, :year] %>
+        <%= f.input :daily_pricing, as: :integer %>
+        <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "choose a size" %>
+        <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Choose a gender"  %>
+        <%# <%= f.input :categories, :collection => @categories %>
+        <%# collection: Category.all, prompt: "Choose a category" %>
+        <%= f.button :submit, class: "btn btn-flat" %>
+      <% end %>
     </div>
   </div>
 </div>

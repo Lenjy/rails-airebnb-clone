@@ -6,25 +6,34 @@
   }
 
   .card-trip {
+    margin-top: 16px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+  .card-booking {
+    margin-top: 16px;
+    padding: 8px;
     overflow: hidden;
     background: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
   }
 
   .card-trip > img {
-    height: 200px;
+    height: 400px;
     width: 100%;
     object-fit: cover;
   }
 
   .card-trip h2 {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
     margin: 0;
   }
 
   .card-trip p {
-    font-size: 12px;
+    font-size: 16px;
     opacity: .7;
     margin: 0;
   }
@@ -42,7 +51,7 @@
     position: absolute;
     right: 16px;
     top: -20px;
-    width: 40px;
+    width: 80px;
   }
 
 .card-category {

@@ -1,17 +1,36 @@
-<h1>Shoes#show</h1>
-<p>Find me in app/views/shoes/show.html.erb</p>
-
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2><%=@shoe.title%></h2>
-      <p><%=@shoe.model%></p>
-      <p><%=@shoe.description%></p>
-      <p><%=@shoe.color%></p>
+<div class="container">
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%=@shoe.title%></h2>
+        <p>Gender: <%=@shoe.gender%></p>
+        <p>Brand: <%=@shoe.brand%></p>
+        <p>Model: <%=@shoe.model%></p>
+        <p>Size: <%=@shoe.shoe_size%></p>
+        <p>Size: <%=@shoe.color%></p>
+        <p>Description: <%=@shoe.description%></p>
+      </div>
+      <h2 class="card-trip-pricing"><%=@shoe.daily_pricing%>€</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
-    <h2 class="card-trip-pricing"><%=@shoe.daily_pricing%></h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
   </div>
 </div>
 
+<div class="container">
+  <div class="card-booking">
+    <%= simple_form_for [ @shoe, @location ] do |f| %>
+      <%= f.input :date_beginning %>
+      <%= f.input :date_end %>
+      <%= f.submit "Submit location demande", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_shoe_path(@shoe) %> |
+<%= link_to 'Back', shoes_path %> |
+
+
+<%# <h1>Shoes#show</h1>
+<p>Find me in app/views/shoes/show.html.erb</p>
+ %>
