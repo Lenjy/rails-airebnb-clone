@@ -2,7 +2,7 @@
   <div>
     <div class="main-body d-flex">
       <div class="card-body">
-        <div class="d-flex flex-column align-items-center text-center"> 
+        <div class="d-flex flex-column align-items-center text-center">
           <%# <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> %>
           <img class="avatar" alt="avatar-large" width="150" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
           <div class="mt-3">
@@ -70,13 +70,16 @@
       </div>
       <div class="m-3">
         <h3 class="text-center">My location</h3>
-        <div class="card-product">
+        <div>
+          <% current_user.locations.each do |location| %>
+          <div class="card-product">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
             <div class="card-product-infos">
-              <h2>Product name</h2>
-              <p>Product description with <strong>relevant info</strong> only.</p>
+              <h2><%= location.title %></h2>
+              <p><%= location.description %></p>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
