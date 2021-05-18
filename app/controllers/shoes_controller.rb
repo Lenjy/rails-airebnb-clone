@@ -3,7 +3,7 @@ class ShoesController < ApplicationController
   before_action :find_shoe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @shoes = Shoe.all
+    @shoes = policy_scope(Shoe).order(created: :desc)
   end
 
   def show
@@ -11,10 +11,12 @@ class ShoesController < ApplicationController
 
   def new
     @shoe = Shoe.new
+    authorize @shoe
   end
 
   def create
     @shoe = Shoe.new(shoe_params)
+    authorize @shoe
     if @shoe.save
       redirect_to shoes_path
     else
@@ -43,5 +45,6 @@ class ShoesController < ApplicationController
 
   def find_shoe
     @shoe = Shoe.find(params[:id])
+    authorize @shoe
   end
 end
