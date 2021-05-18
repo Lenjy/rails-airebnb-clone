@@ -1,2 +1,23 @@
-<h1>Shoes#index</h1>
-<p>Find me in app/views/shoes/index.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "background_shoes.jpg" %>'); height: 400px;">
+  <div class="container d-flex align-items-center">
+    <div>
+      <h1>Shoes qui peut. <strong>Rent your shoes before buying them.</h1>
+      <p>Which shoes will you wear today, my friend ?</p>
+    </div>
+    <%= image_tag("nikeshoe.png", alt: "nike shoe", size: "300") %>
+  </div>
+</div>
+
+<div class="container my-4 align-items-center">
+  <%# <%= simple_form_for @shoe do |f| %>
+    <%# <%= f.association :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "Select shoe size" %>
+    <%# <%= f.association :gender, collection: Shoe::GENDERS, prompt: "Select gender"%>
+    <%# <%= f.button :submit, class: "btn btn-success" %> %>
+  <%# <% end %> %> %> %> %>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+
+

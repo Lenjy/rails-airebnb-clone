@@ -1,10 +1,11 @@
 class ShoesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user! # Temporaire: Pour tester les vues
   # before_action :authenticate_user!, only: :create
   before_action :find_shoe, only: [:show, :edit, :update, :destroy]
 
   def index
     @shoes = policy_scope(Shoe).order(created: :desc)
+    @shoe = Shoe.new
   end
 
   def show

@@ -220,7 +220,9 @@ puts "Created #{Category.all.size} categories from seeds.rb"
     model: "whatever",
     purchasing_date: Date.new,
     color: ['red', 'yellow', 'green', 'white'].sample,
-    daily_pricing: rand(4..50)
+    daily_pricing: rand(4..50),
+    gender: "Male",
+    shoe_size: 40
   )
 }
 
