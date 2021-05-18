@@ -8,7 +8,8 @@
           <h4>UserName</h4>
           <p class="text-secondary mb-1">Description of a shoe's lover</p>
           <%# <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>  %>
-          <a class="btn btn-flat" href="#">Edit</a>
+          <%# <a class="btn btn-flat" href="#">Edit</a> %>
+          <%= link_to "Edit", edit_user_registration_path(@user), class: "btn btn-flat" %>
         </div>
       </div>
     </div>
@@ -17,35 +18,36 @@
         <div class="col-sm-3">
           <h6 class="mb-0">Full Name</h6>
         </div>
-        <div class="col-sm-9 text-secondary"> Kenneth Valdez</div>
+        <div class="col-sm-9 text-secondary"><%= current_user.first_name %> <%= current_user.last_name %></div>
       </div>
       <hr>
       <div class="row">
         <div class="col-sm-3">
           <h6 class="mb-0">Email</h6>
         </div>
-        <div class="col-sm-9 text-secondary"> fip@jukmuh.al</div>
+        <div class="col-sm-9 text-secondary"><%= current_user.email %></div>
       </div>
       <hr>
       <div class="row">
         <div class="col-sm-3">
           <h6 class="mb-0">Phone</h6>
         </div>
-        <div class="col-sm-9 text-secondary"> (239) 816-9029</div>
+        <div class="col-sm-9 text-secondary"><%= current_user.telephone_number %>
+        </div>
       </div>
       <hr>
       <div class="row">
         <div class="col-sm-3">
-          <h6 class="mb-0">Mobile</h6>
+          <h6 class="mb-0">Number of shoes</h6>
         </div>
-        <div class="col-sm-9 text-secondary"> (320) 380-4539</div>
+        <div class="col-sm-9 text-secondary"><%= current_user.shoes.count%></div>
       </div>
       <hr>
       <div class="row">
         <div class="col-sm-3">
           <h6 class="mb-0">Address</h6>
         </div>
-        <div class="col-sm-9 text-secondary"> Bay Area, San Francisco, CA</div>
+        <div class="col-sm-9 text-secondary"><%= current_user.address %></div>
       </div>
     </div>
   </div>
