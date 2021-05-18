@@ -3,6 +3,9 @@ class Shoe < ApplicationRecord
   GENDERS = ["Male", "Female", "For both"]
 
   belongs_to :user
+  has_many :categories, through: :link_to_cats
+  accepts_nested_attributes_for :categories
+
   validates :title, presence: true
   validates :description, presence: true, length: {minimum: 6}
   validates :brand, presence: true

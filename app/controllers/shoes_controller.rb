@@ -17,11 +17,12 @@ class ShoesController < ApplicationController
 
   def create
     @shoe = Shoe.new(shoe_params)
+    @shoe.user = current_user
     authorize @shoe
     if @shoe.save
-      redirect_to shoes_path
+      redirect_to  dashboard_index_path
     else
-      render :new
+      redirect_to  dashboard_index_path(@shoe)
     end
   end
 
@@ -41,7 +42,7 @@ class ShoesController < ApplicationController
   private
 
   def shoe_params
-    params.require(:shoe).permit(:title, :description, :brand, :model, :purchasing_date, :color, :daily_pricing)
+    params.require(:shoe).permit(:title, :description, :brand, :model, :purchasing_date, :color, :daily_pricing, :shoe_size, :gender)
   end
 
   def find_shoe
