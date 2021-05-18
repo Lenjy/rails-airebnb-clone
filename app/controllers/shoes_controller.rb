@@ -1,5 +1,6 @@
 class ShoesController < ApplicationController
-  before_action :authenticate_user!, only: :create
+  skip_before_action :authenticate_user!
+  # before_action :authenticate_user!, only: :create
   before_action :find_shoe, only: [:show, :edit, :update, :destroy]
 
   def index
