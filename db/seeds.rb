@@ -210,19 +210,86 @@ test_01 = User.create(first_name: "Basil", last_name: "Lizotte", address: "4 rue
 
 puts "Created #{User.all.size} user from seeds.rb"
 
-15.times {
-  Shoe.create(
-    user_id: test_01.id,
-    title: "Cool shoe from seeds.rb",
-    description: "This shoe is really cool, it's so nice and comes from seeds.rb",
-    brand: ["Nike", "Adidas", "Reebok", "Asics", "Clarks"].sample,
-    model: "whatever",
-    purchasing_date: Date.new(),
-    color: ['red', 'yellow', 'green', 'white'].sample,
-    daily_pricing: rand(4..50),
-    gender: ["Male", "Female", "For both"].sample,
-    shoe_size: rand(34..50)
-  )
-}
+# 15.times {
+#   Shoe.create(
+#     user_id: test_01.id,
+#     title: "Cool shoe from seeds.rb",
+#     description: "This shoe is really cool, it's so nice and comes from seeds.rb",
+#     brand: ["Nike", "Adidas", "Reebok", "Asics", "Clarks"].sample,
+#     model: "whatever",
+#     purchasing_date: Date.new(),
+#     color: ['red', 'yellow', 'green', 'white'].sample,
+#     daily_pricing: rand(4..50),
+#     gender: ["Male", "Female", "For both"].sample,
+#     shoe_size: rand(34..50)
+#   )
+# }
+
+
+Shoe.create(
+  user_id: test_01.id,
+  title: "Stan smith from the 70s",
+  description: "This shoe is really cool, I bought it in the 1995, it's an old model",
+  brand: "Adidas"
+  model: "Stan Smith",
+  purchasing_date: Date.new(),
+  color: "White",
+  daily_pricing: 3,
+  gender: "For both"
+  shoe_size: 39
+)
+
+Shoe.create(
+  user_id: test_01.id,
+  title: "Fancy crocs for house-cleaning",
+  description: "I love my crocs and want to share them with people",
+  brand: "Crocs"
+  model: "Classic Clog",
+  purchasing_date: Date.new(),
+  color: "Green",
+  daily_pricing: 5,
+  gender: "For both"
+  shoe_size: 43
+)
+
+Shoe.create(
+  user_id: test_01.id,
+  title: "Trendy Clarks shoes - a bit dirty",
+  description: "Good general condition",
+  brand: "Clarks"
+  model: "Desert boot",
+  purchasing_date: Date.new(),
+  color: "Beige",
+  daily_pricing: 6,
+  gender: "Male"
+  shoe_size: 45
+)
+
+Shoe.create(
+  user_id: test_01.id,
+  title: "Cool New Balance",
+  description: "New but too small for me",
+  brand: "New Balance"
+  model: "237",
+  purchasing_date: Date.new(),
+  color: "Multicolor",
+  daily_pricing: 4,
+  gender: "For both"
+  shoe_size: 37
+)
+
+Shoe.create(
+  user_id: test_01.id,
+  title: "Louboutin",
+  description: "I don't use them every day so I want them to be useful for other poeple",
+  brand: "Louboutin"
+  model: "So Kate 120",
+  purchasing_date: Date.new(),
+  color: "Black",
+  daily_pricing: 4,
+  gender: "Female"
+  shoe_size: 38
+)
+
 
 puts "Created #{Shoe.all.size} shoes from seeds.rb"
