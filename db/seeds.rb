@@ -10,7 +10,9 @@ require "open-uri"
 require_relative '../app/models/category'
 require_relative '../app/models/shoe'
 
+
 Category.destroy_all
+Location.destroy_all
 Shoe.destroy_all
 User.destroy_all
 

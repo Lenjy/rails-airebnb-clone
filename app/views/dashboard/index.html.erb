@@ -65,7 +65,7 @@
             <% current_user.shoes.each do |shoe| %>
             <div class="card-product mb-2">
               <% if shoe.photo.attached?  %>
-                <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= cl_image_tag shoe.photo.key, height: 300, width: 400, crop: :fill %>
               <% else %>
                 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
               <% end %>
@@ -85,6 +85,7 @@
         
               <div class="card-product-infos">
                 <h2><%= location.shoe.title %></h2>
+                <p><%= location.shoe.photo %></p>
                 <p><%= location.shoe.description %></p>
               </div>
             </div>
@@ -101,8 +102,8 @@
           <%= f.input :brand %>
           <%= f.input :model %>
           <%= f.input :color %>
-          <%= f.input :purchasing_date, as: :date, start_year: Date.today.year - 90,
-                                end_year: Date.today.year - 12, discard_day: true,
+          <%= f.input :purchasing_date, as: :date, start_year: Date.today.year - 15,
+                                end_year: Date.today.year - 1, discard_day: true,
                                 order: [:month, :year] %>
           <%= f.input :daily_pricing, as: :integer %>
           <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "choose a size" %>

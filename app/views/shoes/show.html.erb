@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <img src=<%= cl_image_tag @shoe.photo.key, crop: :fill %>>
     <div class="card-trip-infos">
       <div>
         <h2><%=@shoe.title%></h2>
@@ -27,8 +27,15 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_shoe_path(@shoe) %> |
-<%= link_to 'Back', shoes_path %> |
+<div class="container">
+  <div class="card-options">
+    <% if policy(@shoe).edit? %>
+      <%= link_to 'Edit', edit_shoe_path(@shoe), class:"btn btn-primary btn-lg btn-block my-8" %>
+    <% end %>   
+    <%= link_to 'Back', shoes_path, class:"btn btn-primary btn-lg btn-block" %>
+  </div>
+</div>
+
 
 
 <%# <h1>Shoes#show</h1>
