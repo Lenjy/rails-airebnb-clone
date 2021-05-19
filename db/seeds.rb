@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
+
 require_relative '../app/models/category'
 require_relative '../app/models/shoe'
 
@@ -226,7 +228,7 @@ puts "Created #{User.all.size} user from seeds.rb"
 # }
 
 
-Shoe.create(
+stan_smith = Shoe.create(
   user_id: test_01.id,
   title: "Stan smith from the 70s",
   description: "This shoe is really cool, I bought it in the 1995, it's an old model",
@@ -239,7 +241,7 @@ Shoe.create(
   shoe_size: 39
 )
 
-Shoe.create(
+crocs = Shoe.create(
   user_id: test_01.id,
   title: "Fancy crocs for house-cleaning",
   description: "I love my crocs and want to share them with people",
@@ -252,7 +254,7 @@ Shoe.create(
   shoe_size: 43
 )
 
-Shoe.create(
+clarks = Shoe.create(
   user_id: test_01.id,
   title: "Trendy Clarks shoes - a bit dirty",
   description: "Good general condition",
@@ -265,7 +267,7 @@ Shoe.create(
   shoe_size: 45
 )
 
-Shoe.create(
+new_balance = Shoe.create(
   user_id: test_01.id,
   title: "Cool New Balance",
   description: "New but too small for me",
@@ -278,7 +280,7 @@ Shoe.create(
   shoe_size: 37
 )
 
-Shoe.create(
+louboutin = Shoe.create(
   user_id: test_01.id,
   title: "Louboutin",
   description: "I don't use them every day so I want them to be useful for other poeple",
@@ -291,5 +293,21 @@ Shoe.create(
   shoe_size: 38
 )
 
-
 puts "Created #{Shoe.all.size} shoes from seeds.rb"
+
+photo_stan_smith = URI.open('https://images-na.ssl-images-amazon.com/images/I/61Xv%2BIE1vtL._AC_UX500_.jpg')
+stan_smith.photo.attach(io: photo_stan_smith, filename: 'stan_smith.jpg', content_type: 'image/jpg')
+
+photo_crocs = URI.open('https://photos6.spartoo.com/photos/359/3594021/3594021_350_A.jpg')
+crocs.photo.attach(io: photo_crocs, filename: 'crocs.jpg', content_type: 'image/jpg')
+
+photo_clarks = URI.open('https://www.commeuncamion.com/content/uploads/2017/02/comparatif-desert-boots-Clarks-porte.jpg')
+clarks.photo.attach(io: photo_clarks, filename: 'clarks.jpg', content_type: 'image/jpg')
+
+photo_new_balance = URI.open('https://www.commeuncamion.com/content/uploads/2021/04/95.jpg')
+new_balance.photo.attach(io: photo_new_balance, filename: 'new_balance.jpg', content_type: 'image/jpg')
+
+photo_louboutin = URI.open('https://static-eu.christianlouboutin.com/media/catalog/product/cache/50910a554f402a7e962c16653ab289e4/3/1/3130694bk01-3130694bk01-main_image-ecommerce-christianlouboutin-sokate-3130694_bk01_1_1200x1200.jpg')
+louboutin.photo.attach(io: photo_louboutin, filename: 'louboutin.jpg', content_type: 'image/jpg')
+
+puts "Attached #{Shoe.all.size} photos on shoes"

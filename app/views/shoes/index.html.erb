@@ -32,7 +32,7 @@
           <div class="d-flex justify-content-between">
 
             <div class="col-4">
-              <%= image_tag("shoeexample.jpg", alt: "card for shoe", size: "180") %>
+              <%= cl_image_tag shoe.photo.key, height: 180, width: 180, crop: :fill %>
               <div class="card-category-price">
                 <h1 class="ml-2" style="color: rgb(28, 221, 135);"><%= shoe.daily_pricing %></h1>
                 <i class="fas fa-euro-sign"></i>
@@ -43,6 +43,7 @@
             <div class="col-8">
               <h2><%= shoe.title %></h2>
               <p><%= shoe.description %></p>
+              <hr>
               <div class="d-flex">
                 <div class="card-category-specs">
                   <div class="d-flex align-items-center">
