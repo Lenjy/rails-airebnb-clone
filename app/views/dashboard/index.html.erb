@@ -60,7 +60,7 @@
       <hr>
       <div class="d-flex show col-md-auto col-md-auto">
         <div class="col-6 m-3">
-          <h3 class="text-center col-categ">My shoes</h3>
+          <h3 class="text-center col-categ">My inventory</h3>
           <div>
             <% current_user.shoes.each do |shoe| %>
             <div class="card-product mb-2">
@@ -77,15 +77,16 @@
             <% end %>
           </div>
         </div>
-        <div class=" col-6 m-3">
-          <h3 class="text-center col-categ">My location</h3>
-          <div>
-            <% current_user.locations.each do |location| %>
-            <div class="card-product mb-2">
         
+        <div class=" col-6 m-3">
+          <h3 class="text-center col-categ">Location Request</h3>
+          <div>
+
+            <% @locations.each do |location| %>
+            <div class="card-product mb-2">
+                <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>        
               <div class="card-product-infos">
                 <h2><%= location.shoe.title %></h2>
-                <p><%= location.shoe.photo %></p>
                 <p><%= location.shoe.description %></p>
               </div>
             </div>

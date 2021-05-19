@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-trip">
-    <img src=<%= cl_image_tag @shoe.photo.key, crop: :fill %>>
+    <%=cl_image_tag @shoe.photo.key, crop: :fill %>
     <div class="card-trip-infos">
       <div>
         <h2><%=@shoe.title%></h2>
@@ -12,20 +12,22 @@
         <p>Description: <%=@shoe.description%></p>
       </div>
       <h2 class="card-trip-pricing"><%=@shoe.daily_pricing%>€</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <%=cl_image_tag @shoe.user.photo.key, {class:"card-trip-user avatar-bordered"} %>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="card-booking">
-    <%= simple_form_for [ @shoe, @location ] do |f| %>
-      <%= f.input :date_beginning %>
-      <%= f.input :date_end %>
-      <%= f.submit "Submit location demande", class: "btn btn-primary" %>
-    <% end %>
+<% unless policy(@shoe).edit? %>
+  <div class="container">
+    <div class="card-booking">
+      <%= simple_form_for [ @shoe, @location ] do |f| %>
+        <%= f.input :date_beginning %>
+        <%= f.input :date_end %>
+        <%= f.submit "Submit location demande", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="container">
   <div class="card-options">

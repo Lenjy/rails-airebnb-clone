@@ -211,6 +211,14 @@ Category.create(name: "Bottines")
 puts "Created #{Category.all.size} categories from seeds.rb"
 
 test_01 = User.create(first_name: "Basil", last_name: "Lizotte", address: "4 rue Victor Masse", telephone_number: "0675674509", email: "basil.lizotte@gmail.com", password: "Lewagon 2021", password_confirmation: "Lewagon 2021")
+test_02 = User.create(first_name: "Arthur", last_name: "Manguin", address: "20 rue Victor Masse", telephone_number: "0675674512", email: "arthur@gmail.com", password: "Lewagon 2021", password_confirmation: "Lewagon 2021")
+
+
+photo_basil = URI.open('https://media-exp1.licdn.com/dms/image/C4E03AQE3w6qncy7Plw/profile-displayphoto-shrink_400_400/0/1620132183102?e=1626912000&v=beta&t=SAQo11fB-mb9HerJn-MjDj96KS6ozEEMJRVnEyLUZrU')
+test_01.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')
+
+photo_arthur = URI.open('https://media-exp1.licdn.com/dms/image/C4E03AQELhBcLohE_3g/profile-displayphoto-shrink_400_400/0/1517456385177?e=1626912000&v=beta&t=TZYnAlkO6MwZR840tiSaZmY5t5CcFaAVWzxLaT8Zqm8')
+test_02.photo.attach(io: photo_arthur, filename: 'arthur_demo.jpg', content_type: 'image/jpg')
 
 puts "Created #{User.all.size} user from seeds.rb"
 
@@ -244,7 +252,7 @@ stan_smith = Shoe.create(
 )
 
 crocs = Shoe.create(
-  user_id: test_01.id,
+  user_id: test_02.id,
   title: "Fancy crocs for house-cleaning",
   description: "I love my crocs and want to share them with people",
   brand: "Crocs",
@@ -270,7 +278,7 @@ clarks = Shoe.create(
 )
 
 new_balance = Shoe.create(
-  user_id: test_01.id,
+  user_id: test_02.id,
   title: "Cool New Balance",
   description: "New but too small for me",
   brand: "New Balance",
@@ -313,3 +321,10 @@ photo_louboutin = URI.open('https://static-eu.christianlouboutin.com/media/catal
 louboutin.photo.attach(io: photo_louboutin, filename: 'louboutin.jpg', content_type: 'image/jpg')
 
 puts "Attached #{Shoe.all.size} photos on shoes"
+
+basil_location = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
+basil_location.shoe = new_balance 
+basil_location.user = test_01
+basil_location.save
+
+puts "Attached #{Location.all.size} locations"
