@@ -1,21 +1,18 @@
 
-<div class="banner">
-  <div class="container justify-content-center d-flex  align-items-center">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "background_shoes.png"%>');height: 475px;">
+  <div class="container justify-content-center d-flex align-items-center">
     <div class="col-12 col-lg-6 home-banner-text-container">
       <div>
          <img src='https://res.cloudinary.com/dleebu5sp/image/upload/v1621349642/Colorful_Sneakers_PNG_Clipart-487_vu9cr6.png' style='width: 80%;'/>
       </div>
       <div class="mt-2">
-        <h1 style="color: black">SHOES QUI PEUT</h1>
+        <h1>SHOES QUI PEUT</h1>
       </div>
     </div>
 
     <div class="col-12 col-lg-6 home-banner-text-container ">
       <div style="height: 45px; margin-bottom: 25px">
-        <span id="banner-typed-text"></span>
-      </div>
-      <div>
-      <%=link_to 'Login', new_user_session_path, class: "btn btn-flat"%>
+        <span id="banner-typed-text" style="color: white"></span>
       </div>
     </div>
 
@@ -23,8 +20,10 @@
 </div>
 
 <div class= "row justify-content-center mt-4">
-  <%=link_to 'Start searching', shoes_path, class: "btn btn-flat"%>
+  <%=link_to 'Start searching', shoes_path, class: "btn btn-flat", style: 'margin-bottom: 20px'%>
 </div>
+
+<hr>
 
 <div>
 
@@ -32,7 +31,7 @@
     <h1>Why Shoes qui peut ?</h1>
   </div>
 
-  <div class="container justify-content-center d-flex mt-4 lower-home ">
+  <div class="container justify-content-center d-flex mt-4 lower-home" style="box-shadow: 0 0 15px rgba(0,0,0,0.2);">
     <div class="col-12 col-lg-6">
       <div class="notification">
         <i class="fas fa-balance-scale-left"></i>
