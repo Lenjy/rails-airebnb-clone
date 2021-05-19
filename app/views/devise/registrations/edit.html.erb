@@ -29,7 +29,8 @@
     <%= f.input :telephone_number,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "telephone_number" }%>            
+                input_html: { autocomplete: "telephone_number" }%>
+    <%= f.input :photo, as: :file %>           
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
