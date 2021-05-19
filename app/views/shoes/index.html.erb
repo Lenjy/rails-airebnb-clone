@@ -3,6 +3,20 @@
     <div>
       <h1>Shoes qui peut. <strong>Rent your shoes before buying them.</h1>
       <p>Which shoes will you wear today ?</p>
+      <div class="d-flex my-4">
+        <%= simple_form_for @shoe do |f| %>
+        <div class="d-flex align-items-center" style="color: white;">
+          <%= f.input :brand, input_html: { class: "mr-5" }%>
+          <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "Select" %>
+          <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Select"%>
+          <%= f.button :submit, 'Shoes qui peut !', class: "btn btn-flat", style: "height: 38px; margin-top: 16px"%>
+        </div>
+        <% end %>
+        <%# <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form> %>
+      </div>
     </div>
     <%= image_tag("nikeshoe.png", alt: "nike shoe", size: "300") %>
   </div>
@@ -10,70 +24,53 @@
 
 <div class="container">
 
-  <div class="d-flex my-4 justify-content-center">
-    <%= simple_form_for @shoe do |f| %>
-    <div class="d-flex">
-      <%= f.input :brand %>
-      <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "Select" %>
-      <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Select"%>
-      <%= f.button :submit, 'Shoes qui peut !', class: "btn btn-flat"%>
-    </div>
-    <% end %>
-    <%# <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form> %>
-  </div>
 
   <div class="cards">
     <% @shoes.each do |shoe| %>
-    <div class="card-category">
+      <div class="card-category">
+        <div class="row">
+          <div class="d-flex justify-content-between">
 
-    <div class="row">
-      <div class="d-flex justify-content-between">
-
-        <div class="col-3">
-          <%= image_tag("shoeexample.jpg", alt: "card for shoe", size: "150") %>
-          <div class="card-category-price">
-            <h1 class="ml-2" style="color: rgb(28, 221, 135);"><%= shoe.daily_pricing %></h1>
-            <i class="fas fa-euro-sign"></i>
-            <span style="font-size: 12px; opacity: 0.6">per day</span>
-          </div>
-        </div>
-
-        <div class="col-9">
-          <h2><%= shoe.title %></h2>
-          <p><%= shoe.description %></p>
-          <div class="d-flex">
-            <div class="card-category-specs">
-              <div class="d-flex align-items-center">
-                <i class="fas fa-tags"></i>
-                <p class="ml-1"><%= shoe.brand %></p>
-              </div>
-              <div class="d-flex align-items-center">
-                <i class="fas fa-shoe-prints"></i>
-                <p class="ml-1"><%= shoe.model %></p>
+            <div class="col-4">
+              <%= image_tag("shoeexample.jpg", alt: "card for shoe", size: "180") %>
+              <div class="card-category-price">
+                <h1 class="ml-2" style="color: rgb(28, 221, 135);"><%= shoe.daily_pricing %></h1>
+                <i class="fas fa-euro-sign"></i>
+                <span style="font-size: 12px; opacity: 0.6; margin-left: 4px;">per day</span>
               </div>
             </div>
-            <div class="card-category-specs ml-2">
-              <div class="d-flex align-items-center">
-                <i class="fas fa-palette"></i>
-                <p class="ml-1"><%= shoe.color %></p>
+
+            <div class="col-8">
+              <h2><%= shoe.title %></h2>
+              <p><%= shoe.description %></p>
+              <div class="d-flex">
+                <div class="card-category-specs">
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-tags"></i>
+                    <p class="ml-1"><%= shoe.brand %></p>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-shoe-prints"></i>
+                    <p class="ml-1"><%= shoe.model %></p>
+                  </div>
+                </div>
+                <div class="card-category-specs ml-2">
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-palette"></i>
+                    <p class="ml-1"><%= shoe.color %></p>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-venus-mars"></i>
+                    <p class="ml-1"><%= shoe.gender %></p>
+                  </div>
+                </div>
               </div>
-              <div class="d-flex align-items-center">
-                <i class="fas fa-venus-mars"></i>
-                <p class="ml-1"><%= shoe.gender %></p>
-              </div>
+              <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-link", style: "margin-top: 20px; padding: 0px;"%>
             </div>
+
           </div>
         </div>
-
       </div>
-    </div>
-
-
-
-
     <% end %>
   </div>
 
