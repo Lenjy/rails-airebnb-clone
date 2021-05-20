@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
   resources :dashboard, only: [:index] do
     resources :shoes, only: [:create]
-  end  
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
