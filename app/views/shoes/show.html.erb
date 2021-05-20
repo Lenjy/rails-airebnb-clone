@@ -86,9 +86,17 @@
     <div class="container">
       <div class="card-booking">
         <%= simple_form_for [ @shoe, @location ] do |f| %>
-          <%= f.input :date_beginning, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.submit "Submit location demande", class: "btn btn-flat" %>
+          <%= f.input :date_beginning, as: :string, required: false, input_html: {class: "datepicker start"} %>
+          <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker end"} %>
+          <div class="d-flex justify-content-between">
+            <%= f.submit "Submit", class: "btn btn-flat" %>
+            <div class="d-flex">
+              <h1 class="mx-5" id="price"></h1>
+              <button type="button" class="btn btn-flat" id="convert">
+                convert
+              </button>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>

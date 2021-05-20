@@ -18,7 +18,6 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     @location.shoe = @shoe
     authorize @location
-
     deb = location_params["date_beginning"].split("-")
     endy = location_params["date_end"].split("-")
     @location.date_beginning = Date.new(deb[0].to_i,deb[1].to_i,deb[2].to_i) 
