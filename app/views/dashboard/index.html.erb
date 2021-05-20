@@ -118,13 +118,28 @@
           <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div>
               <% @location_requests_sent.each do |location| %>
-                <div class="card-product mb-2">
-                  <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
-                  <div class="card-product-infos">
-                    <h2><%= location.shoe.title %></h2>
-                    <p><%= location.shoe.description %></p>
+                <% if location.accepted_status == nil %>
+                  <div class="card-product mb-2">
+                    <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
+                    <div class="card-product-infos">
+                      <h2><%= location.shoe.title %></h2>
+                      <p><%= location.shoe.description %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
+                      <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
+                      <div class="d-flex justify-content-end align-items-center mt-2">
+                        <h2>Current status: </h2>
+                        <% if location.accepted_status.nil? %>
+                          <h2 class="btn btn-outline-warning disabled ml-1">Pending</h2>
+                        <% elsif location.accepted_status %>
+                          <h2 class="btn btn-flat disabled ml-1">Accepted</h2>
+                        <% else %>
+                          <h2 class="btn btn-warning disabled ml-1">Declined</h2>
+                        <% end %>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             </div>
           </div>
