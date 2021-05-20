@@ -10,6 +10,7 @@ class ShoesController < ApplicationController
 
   def show
     @location = Location.new 
+    @review = Review.new
   end
 
   def new

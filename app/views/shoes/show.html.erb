@@ -29,6 +29,18 @@
   </div>
 <% end %>
 
+<% unless policy(@shoe).edit? %>
+  <div class="container">
+    <div class="card-booking">
+      <%= simple_form_for [ @shoe, @review ] do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :comment %>
+        <%= f.submit "Submit review", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="card-options">
     <% if policy(@shoe).edit? %>
