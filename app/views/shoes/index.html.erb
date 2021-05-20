@@ -40,7 +40,7 @@
               </div>
             </div>
 
-            <div class="col-8">
+            <div class="col-8 p-2 pr-4">
               <h2><%= shoe.title %></h2>
               <p><%= shoe.description %></p>
               <hr>
@@ -66,7 +66,8 @@
                   </div>
                 </div>
               </div>
-              <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-link", style: "margin-top: 20px; padding: 0px;"%>
+              <hr>
+              <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-flat", style: "margin-top: 0px; padding: 4px;"%>
             </div>
 
           </div>
