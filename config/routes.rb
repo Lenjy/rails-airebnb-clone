@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :shoes do
     resources :locations, only: [:create]
+    resource :reviews, only: [:create]
   end  
   resources :locations, only: [:update, :edit, :destroy]
+  resources :reviews, only: [:destroy]
   resources :dashboard, only: [:index] do
     resources :shoes, only: [:create]
   end  
