@@ -71,9 +71,13 @@
                   </div>
                 </div>
               </div>
-              <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-link", style: "margin-top: 20px; padding: 0px;"%>
-            </div>
+              <% if current_user != shoe.user %>
+                <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-flat", style: "margin-top: 20px; padding: 0px;"%>
+              <% else %>
+                <%= link_to "Show my shoes", shoe_path(shoe), class: "btn btn-secondary", style: "margin-top: 20px; padding: 0px;"%>
+              <% end %>
 
+            </div>
           </div>
         </div>
       </div>

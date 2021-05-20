@@ -21,7 +21,9 @@ class ShoesController < ApplicationController
   end
 
   def show
-    @location = Location.new 
+    @location = Location.new
+    @shoe = Shoe.find(params[:id])
+    @pricing = @shoe.daily_pricing
     @review = Review.new
   end
 

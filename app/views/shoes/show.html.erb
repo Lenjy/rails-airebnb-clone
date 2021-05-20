@@ -4,29 +4,103 @@
     <div class="card-trip-infos">
       <div>
         <h2><%=@shoe.title%></h2>
-        <p>Gender: <%=@shoe.gender%></p>
-        <p>Brand: <%=@shoe.brand%></p>
-        <p>Model: <%=@shoe.model%></p>
-        <p>Size: <%=@shoe.shoe_size%></p>
-        <p>Size: <%=@shoe.color%></p>
+        <div class="d-flex">
+          <div>
+            <div class="d-flex">
+              <i class="fas fa-venus-mars"></i>
+              <p>Gender: <%=@shoe.gender%></p>
+            </div>
+            <div class="d-flex">
+              <i class="fas fa-tags"></i>
+              <p>Brand: <%=@shoe.brand%></p>
+            </div>
+            <div class="d-flex">
+              <i class="fas fa-copyright"></i>
+              <p>Model: <%=@shoe.model%></p>
+            </div>
+          </div>
+          <div class="mx-5">
+            <div class="d-flex">
+              <i class="fas fa-level-up-alt"></i>
+              <p>Size: <%=@shoe.shoe_size%></p>
+            </div>
+            <div class="d-flex">
+              <i class="fas fa-palette"></i>
+              <p>color: <%=@shoe.color%></p>
+            </div>
+          </div>
+        </div>
         <p>Description: <%=@shoe.description%></p>
+        <% if current_user == @shoe.user %>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-flat mt-2" data-toggle="modal" data-target="#exampleModal">
+          edit
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="form-shoe m-20 p-3">
+                  <%= simple_form_for([@shoe]) do |f| %>
+                    <%= f.input :title %>
+                    <%= f.input :description %>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <%= f.input :brand %>
+                      <%= f.input :model %>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <%= f.input :color %>
+                      <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "choose a size" %>
+                    </div>
+                    <%= f.input :purchasing_date, as: :date, start_year: Date.today.year - 15,
+                                          end_year: Date.today.year - 1, discard_day: true,
+                                          order: [:month, :year] %>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <%= f.input :daily_pricing, as: :integer %>
+                      <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Choose a gender"  %>
+                    </div>
+                    <%= f.input :photo, as: :file %>
+                    <%# <%= f.input :categories, :collection => @categories %>
+                    <%# collection: Category.all, prompt: "Choose a category" %>
+                    <%= f.button :submit, class: "btn btn-flat" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
       <h2 class="card-trip-pricing"><%=@shoe.daily_pricing%>€</h2>
       <%=cl_image_tag @shoe.user.photo.key, {class:"card-trip-user avatar-bordered"} %>
     </div>
   </div>
 </div>
-
-<% unless policy(@shoe).edit? %>
-  <div class="container">
-    <div class="card-booking">
-      <%= simple_form_for [ @shoe, @location ] do |f| %>
-        <%= f.input :date_beginning %>
-        <%= f.input :date_end %>
-        <%= f.submit "Submit location demande", class: "btn btn-primary" %>
-      <% end %>
+<% if current_user != @shoe.user %>
+  <% unless policy(@shoe).edit? %>
+    <div class="container">
+      <div class="card-booking">
+        <%= simple_form_for [ @shoe, @location ] do |f| %>
+          <%= f.input :date_beginning, as: :string, required: false, input_html: {class: "datepicker start"} %>
+          <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker end"} %>
+          <div class="d-flex justify-content-between">
+            <%= f.submit "Submit", class: "btn btn-flat" %>
+            <div class="d-flex">
+              <h1 class="mx-5" id="price"></h1>
+              <button type="button" class="btn btn-flat" id="convert">
+                convert
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
 <% unless policy(@shoe).edit? %>
@@ -42,16 +116,6 @@
 <% end %>
 
 <div class="container">
-  <div class="card-options">
-    <% if policy(@shoe).edit? %>
-      <%= link_to 'Edit', edit_shoe_path(@shoe), class:"btn btn-primary btn-lg btn-block my-8" %>
-    <% end %>   
-    <%= link_to 'Back', shoes_path, class:"btn btn-primary btn-lg btn-block" %>
-  </div>
+  <p><%= link_to 'Back', shoes_path %>
+  </p>
 </div>
-
-
-
-<%# <h1>Shoes#show</h1>
-<p>Find me in app/views/shoes/show.html.erb</p>
- %>
