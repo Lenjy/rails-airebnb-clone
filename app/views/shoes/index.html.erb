@@ -3,15 +3,21 @@
     <div>
       <h1>Shoes qui peut. <strong>Rent your shoes before buying them.</h1>
       <p>Which shoes will you wear today ?</p>
-      <div class="d-flex my-4">
-        <%= simple_form_for @shoe do |f| %>
-        <div class="d-flex align-items-center" style="color: white;">
-          <%= f.input :brand, input_html: { class: "mr-5" }%>
-          <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "Select" %>
-          <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Select"%>
-          <%= f.button :submit, 'Shoes qui peut !', class: "btn btn-flat", style: "height: 38px; margin-top: 16px"%>
-        </div>
+      <div class="d-flex align-items-center" style="color: white;">        
+        <%= form_tag shoes_path, method: :get, class:"form-inline" do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mr-3",
+          placeholder: "Brand, description..."
+          %>
+          <%= text_field_tag :shoe_size,
+          params[:shoe_size],
+          class: "form-control mr-3",
+          placeholder: "Your size"
+          %>
+          <%= submit_tag "Search", class: "btn btn-flat", style: "height: 38px"%>
         <% end %>
+        <%# end %>
         <%# <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
@@ -30,7 +36,6 @@
       <div class="card-category">
         <div class="row">
           <div class="d-flex justify-content-between">
-
             <div class="col-4">
               <%= cl_image_tag shoe.photo.key, height: 180, width: 180, crop: :fill %>
               <div class="card-category-price">

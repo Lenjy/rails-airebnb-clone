@@ -4,8 +4,20 @@ class ShoesController < ApplicationController
   before_action :find_shoe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @shoes = policy_scope(Shoe)
-    @shoe = Shoe.new
+    if params[:query].present?
+      sql_query = " \
+        shoes.brand @@ :query \
+        OR shoes.color @@ :query \
+        OR shoes.description @@ :query \
+      "
+      @shoes = policy_scope(Shoe).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @shoes = policy_scope(Shoe).order(created_at: :desc)
+    end 
+
+    if params[:shoe_size].present?
+      @shoes = @shoes.where(shoe_size: params[:shoe_size])
+    end 
   end
 
   def show
