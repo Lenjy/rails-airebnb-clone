@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "background_shoes.png"%>');height: 475px;">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "background_shoes.png"%>'); height: calc(100vh - 50px);">
   <div class="container justify-content-center d-flex align-items-center">
     <div class="col-12 col-lg-6 home-banner-text-container">
       <div>
@@ -14,16 +14,13 @@
       <div style="height: 45px; margin-bottom: 25px">
         <span id="banner-typed-text" style="color: white"></span>
       </div>
+      <div class= "row justify-content-center mt-4">
+        <%=link_to 'Start searching', shoes_path, class: "btn btn-flat", style: 'margin-bottom: 20px; font-size: 30px'%>
+      </div>
     </div>
 
   </div>
 </div>
-
-<div class= "row justify-content-center mt-4">
-  <%=link_to 'Start searching', shoes_path, class: "btn btn-flat", style: 'margin-bottom: 20px'%>
-</div>
-
-<hr>
 
 <div>
 
