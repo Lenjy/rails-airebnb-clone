@@ -25,7 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import { loadDynamicBannerText } from '../channels/banner';
-
+import { initFlatpickr } from "../plugins/flatpickr";
+initFlatpickr();
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -35,3 +36,4 @@ document.addEventListener('turbolinks:load', () => {
   // [...]
   loadDynamicBannerText();
 });
+
