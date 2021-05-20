@@ -110,6 +110,22 @@
                       </div>
                     </div>
                   </div>
+                <% else %>
+                  <div class="card-product mb-2">
+                    <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
+                    <div class="card-product-infos" style="filter: blur(4px)">
+                      <h2><%= location.shoe.title %></h2>
+                      <p><%= location.shoe.description %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
+                      <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
+                    </div>
+                  </div>
+                  <% if location.accepted_status == true %>
+                    <h1 style="color: rgb(40, 167, 68); position: absolute; top: 193px; left: 206px;">Accepted !</h1>
+                  <% else %>
+                    <h1 style="color: rgb(221, 52, 68); position: absolute; top: 193px; left: 206px;">Declined !</h1>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
