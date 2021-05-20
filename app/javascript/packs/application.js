@@ -24,8 +24,11 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { event } from "jquery";
+import { start } from "turbolinks";
 import { loadDynamicBannerText } from '../channels/banner';
-
+import { initFlatpickr } from "../plugins/flatpickr";
+initFlatpickr();
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -35,3 +38,22 @@ document.addEventListener('turbolinks:load', () => {
   // [...]
   loadDynamicBannerText();
 });
+
+const convert = document.getElementById("convert")
+const price = document.getElementById("price")
+
+convert.addEventListener("click", (event) => {
+  event.preventDefault();
+  const start = document.getElementsByClassName("start")[0].value.split("-");
+  const endy = document.getElementsByClassName("end")[0].value.split("-");
+  const daily = document.getElementsByClassName("card-trip-pricing")[0].innerText.slice(0, -1);
+
+  const dateStart = new Date (parseInt(start[0], 10),parseInt(start[1], 10),parseInt(start[2], 10));
+  console.log(dateStart);
+  const dateEndy = new Date (parseInt(endy[0], 10),parseInt(endy[1], 10),parseInt(endy[2], 10));
+  console.log(dateEndy);
+  console.log(dateEndy - dateStart);
+  const one_day = 1000*60*60*24;
+  const days = Math.round(( dateEndy - dateStart )/one_day);
+  price.innerText =`${days * daily}$`;
+})

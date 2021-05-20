@@ -18,9 +18,10 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     @location.shoe = @shoe
     authorize @location
-
-    @location.date_beginning = Date.new(location_params["date_beginning(1i)"].to_i, location_params["date_beginning(2i)"].to_i, location_params["date_beginning(3i)"].to_i)
-    @location.date_end = Date.new(location_params["date_end(1i)"].to_i, location_params["date_end(2i)"].to_i, location_params["date_end(3i)"].to_i)
+    deb = location_params["date_beginning"].split("-")
+    endy = location_params["date_end"].split("-")
+    @location.date_beginning = Date.new(deb[0].to_i,deb[1].to_i,deb[2].to_i) 
+    @location.date_end = Date.new(endy[0].to_i,endy[1].to_i,endy[2].to_i)
     location_period = @location.date_end - @location.date_beginning
     pricing = @shoe.daily_pricing * location_period
     @location.user = current_user
