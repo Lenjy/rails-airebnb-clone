@@ -20,10 +20,10 @@ class LocationsController < ApplicationController
     authorize @location
     deb = location_params["date_beginning"].split("-")
     endy = location_params["date_end"].split("-")
-    @location.date_beginning = Date.new(deb[0].to_i,deb[1].to_i,deb[2].to_i) 
+    @location.date_beginning = Date.new(deb[0].to_i,deb[1].to_i,deb[2].to_i)
     @location.date_end = Date.new(endy[0].to_i,endy[1].to_i,endy[2].to_i)
-    location_period = @location.date_end - @location.date_beginning
-    pricing = @shoe.daily_pricing * location_period
+    location_period = (@location.date_end - @location.date_beginning).to_i
+    @location.location_pricing = @shoe.daily_pricing * location_period
     @location.user = current_user
     if @location.save
       redirect_to dashboard_index_path
