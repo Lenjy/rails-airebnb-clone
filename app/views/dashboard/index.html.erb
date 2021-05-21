@@ -87,6 +87,9 @@
                   <div class="card-product-infos">
                     <h2><%= shoe.title %></h2>
                     <p><%= shoe.description %></p>
+                    <div class="d-flex justify-content-end mt-2">
+                        <%= link_to 'Remove shoe', shoe_path(shoe), method: :delete, data: {confirm: 'Are you sure you want to delete shoe ?'}, class: "btn btn-link", style: "position: relative; bottom: -86px; right: -15px;" %>
+                      </div>
                   </div>
                 </div>
               <% end %>
