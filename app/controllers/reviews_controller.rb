@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
       authorize @review
       @review.user = current_user
       if @review.save
-        redirect_to dashboard_index_path
+        redirect_to shoe_path(@shoe)
       else
         render :new
       end

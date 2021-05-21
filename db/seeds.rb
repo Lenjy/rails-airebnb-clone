@@ -318,7 +318,7 @@ bolo = Shoe.create(
 
 tongsandwish = Shoe.create(
   user_id: basil.id,
-  title: "Tong Sandwish",
+  title: "Tong Sandwich",
   description: "Amazing style",
   brand: "Foodfoot",
   model: "Crocs Boots",
