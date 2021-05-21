@@ -328,4 +328,18 @@ basil_location.user = test_01
 basil_location.location_pricing = basil_location.shoe.daily_pricing * (basil_location.date_end - basil_location.date_beginning).to_i
 basil_location.save
 
+arthur_location = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
+arthur_location.shoe = louboutin
+arthur_location.user = test_02
+arthur_location.location_pricing = arthur_location.shoe.daily_pricing * (arthur_location.date_end - arthur_location.date_beginning).to_i
+arthur_location.save
+
+basil_location_two = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
+basil_location_two.shoe = crocs
+basil_location_two.user = test_01
+basil_location_two.accepted_status = true
+basil_location_two.location_pricing = basil_location_two.shoe.daily_pricing * (basil_location_two.date_end - basil_location_two.date_beginning).to_i
+basil_location_two.save
+
+
 puts "Attached #{Location.all.size} locations"

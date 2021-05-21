@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :shoes
   has_many :locations
   has_many :reviews
-  has_many :reviews
+  has_many :requests, through: :shoes, source: :locations
   has_one_attached :photo
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
