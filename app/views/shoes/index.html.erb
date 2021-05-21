@@ -3,15 +3,21 @@
     <div>
       <h1>Shoes qui peut. <strong>Rent your shoes before buying them.</h1>
       <p>Which shoes will you wear today ?</p>
-      <div class="d-flex my-4">
-        <%= simple_form_for @shoe do |f| %>
-        <div class="d-flex align-items-center" style="color: white;">
-          <%= f.input :brand, input_html: { class: "mr-5" }%>
-          <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "Select" %>
-          <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Select"%>
-          <%= f.button :submit, 'Shoes qui peut !', class: "btn btn-flat", style: "height: 38px; margin-top: 16px"%>
-        </div>
+      <div class="d-flex align-items-center" style="color: white;">        
+        <%= form_tag shoes_path, method: :get, class:"form-inline" do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mr-3",
+          placeholder: "Brand, description..."
+          %>
+          <%= text_field_tag :shoe_size,
+          params[:shoe_size],
+          class: "form-control mr-3",
+          placeholder: "Your size"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary", style: "height: 38px"%>
         <% end %>
+        <%# end %>
         <%# <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
@@ -27,48 +33,60 @@
 
   <div class="cards">
     <% @shoes.each do |shoe| %>
-      <div class="card-category">
-        <div class="row">
+      <div class="card-category bg-white">
+        <div class="row flex-grow-1">
           <div class="d-flex justify-content-between">
-
             <div class="col-4">
               <%= cl_image_tag shoe.photo.key, height: 180, width: 180, crop: :fill %>
-              <div class="card-category-price">
-                <h1 class="ml-2" style="color: rgb(28, 221, 135);"><%= shoe.daily_pricing %></h1>
-                <i class="fas fa-euro-sign"></i>
+              <div class="card-category-price mx-3">
+                <h1 class="ml-2 text-primary"><%= shoe.daily_pricing %></h1>
+                <i class="fas fa-euro-sign text-primary"></i>
                 <span style="font-size: 12px; opacity: 0.6; margin-left: 4px;">per day</span>
               </div>
             </div>
 
             <div class="col-8">
-              <h2><%= shoe.title %></h2>
-              <p><%= shoe.description %></p>
-              <hr>
-              <div class="d-flex">
-                <div class="card-category-specs">
-                  <div class="d-flex align-items-center">
-                    <i class="fas fa-tags"></i>
-                    <p class="ml-1"><%= shoe.brand %></p>
+              <div>
+                <h2><%= shoe.title %></h2>
+                <h6><%= shoe.description %></h6>
+                <hr>
+                <div class="d-flex justify-content-around">
+                  <div class="card-category-specs">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-tags text-primary"></i>
+                      <p class="ml-3"><%= shoe.brand %></p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-level-up-alt text-primary"></i>
+                      <p class="ml-3">size : <%= shoe.shoe_size %></p>
+                    </div>
                   </div>
-                  <div class="d-flex align-items-center">
-                    <i class="fas fa-shoe-prints"></i>
-                    <p class="ml-1"><%= shoe.model %></p>
+                  <div class="card-category-specs ml-2">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-palette text-primary"></i>
+                      <p class="ml-3"><%= shoe.color %></p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-venus-mars text-primary"></i>
+                      <p class="ml-3"><%= shoe.gender %></p>
+                    </div>
                   </div>
                 </div>
-                <div class="card-category-specs ml-2">
-                  <div class="d-flex align-items-center">
-                    <i class="fas fa-palette"></i>
-                    <p class="ml-1"><%= shoe.color %></p>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <i class="fas fa-venus-mars"></i>
-                    <p class="ml-1"><%= shoe.gender %></p>
-                  </div>
+                <div class="text-right align-bottom mr-3">
+                  <%# <% if current_user != shoe.user %>
+                    <%= link_to '<button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block pos-card"><span>BOOKING</span>
+                      <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fas fa-shoe-prints"></i>
+                      </div>
+                    </button>'.html_safe, shoe_path(shoe) %>
+
+                    <%# <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-flat right", style: "margin-top: 20px; padding: 0px;"%>
+                  <%# <% else %>
+                    <%# <%= link_to "Show my shoes", shoe_path(shoe), class: "btn btn-light", style: "margin-top: 20px; padding: 0px;"%>
+                  <%# <% end %> 
                 </div>
               </div>
-              <%= link_to "Rent these shoes !", shoe_path(shoe), class: "btn btn-link", style: "margin-top: 20px; padding: 0px;"%>
             </div>
-
           </div>
         </div>
       </div>

@@ -4,12 +4,27 @@ class ShoesController < ApplicationController
   before_action :find_shoe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @shoes = policy_scope(Shoe)
-    @shoe = Shoe.new
+    if params[:query].present?
+      sql_query = " \
+        shoes.brand @@ :query \
+        OR shoes.color @@ :query \
+        OR shoes.description @@ :query \
+      "
+      @shoes = policy_scope(Shoe).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @shoes = policy_scope(Shoe).order(created_at: :desc)
+    end
+
+    if params[:shoe_size].present?
+      @shoes = @shoes.where(shoe_size: params[:shoe_size])
+    end
   end
 
   def show
-    @location = Location.new 
+    @location = Location.new
+    @shoe = Shoe.find(params[:id])
+    @pricing = @shoe.daily_pricing
+    @review = Review.new
   end
 
   def new
@@ -38,7 +53,7 @@ class ShoesController < ApplicationController
 
   def destroy
     @shoe.destroy
-    redirect_to shoes_path
+    redirect_to dashboard_index_path
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_203537) do
+ActiveRecord::Schema.define(version: 2021_05_20_134645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,20 @@ ActiveRecord::Schema.define(version: 2021_05_18_203537) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "accepted_status"
     t.index ["shoe_id"], name: "index_locations_on_shoe_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "comment"
+    t.bigint "user_id", null: false
+    t.bigint "shoe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shoe_id"], name: "index_reviews_on_shoe_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "shoes", force: :cascade do |t|
@@ -100,5 +112,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_203537) do
   add_foreign_key "link_to_cats", "shoes"
   add_foreign_key "locations", "shoes"
   add_foreign_key "locations", "users"
+  add_foreign_key "reviews", "shoes"
+  add_foreign_key "reviews", "users"
   add_foreign_key "shoes", "users"
 end

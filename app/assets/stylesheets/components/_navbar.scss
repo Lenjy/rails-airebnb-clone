@@ -13,3 +13,27 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+
+.user-tasks {
+  display: none;
+}
+.user-tasks.active {
+  display: block;
+}
+.user-tasks-navbar {
+  background-color: rgb(206, 200, 200);
+  color: white;
+  justify-content: space-between;
+}
+.user-tasks-navbar-tab {
+  color: white;
+  text-align: center;
+}
+.user-tasks-navbar-tab.active {
+  background-color: white;
+  color: black;
+}
+li.nav-item {
+  width: 33%;
+}

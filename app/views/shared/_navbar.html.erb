@@ -1,9 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <i class="fas fa-shoe-prints"></i>
+    <div class="bg-primary p-2 rounded-circle text-center">
+    <i class="fas fa-shoe-prints text-white  text-center fa-lg"></i>
+    </div>
     <%# <img class="fit-picture" src="../../assets/images/chaussure.png"> %>
     <%# <%= image_tag "../../assets/images/chaussure.png" %>
-    <% end %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,15 +13,20 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto d-flex justify-content-center align-items-baseline">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", root_path , class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Add your shoe", dashboard_index_path , class: "btn btn-primary", style: "text-align: start; width: 117px" %>
         </li>
         <li class="nav-item">
           <%= link_to "Search", shoes_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown pt-2">
+        <li>
+          <button type="button" class="btn btn-primary" style="text-align: start;width: 117px">
+            Notifications <span class="badge badge-light ml-1"><%= @count_new_notifs %></span>
+          </button>
+        </li>
+        <li class="nav-item dropdown pt-2 ml-2">
           <%= link_to current_user.first_name, dashboard_index_path %>
           <%= image_tag "", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

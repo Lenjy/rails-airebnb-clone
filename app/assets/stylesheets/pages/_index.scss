@@ -1,2 +1,251 @@
 // Import page-specific CSS files here.
 @import "home";
+
+$font-primary: 'Poppins',Arial, sans-serif;
+
+
+@mixin transition($transition) {
+  -moz-transition: all $transition ease;
+  -o-transition: all $transition ease;
+  -webkit-transition: all $transition ease;
+  -ms-transition: all $transition ease;
+  transition: all $transition ease;
+}
+$primary: #ec8f6a;
+$secondary: #8bbabb;
+$tertiary: #e2c275;
+$quarternary: #b96b9f;
+body{
+	font-family: $font-primary;
+	font-size: 15px;
+	line-height: 1.8;
+	font-weight: normal;
+}
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+button {
+	transition: .3s all ease;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: $font-primary;
+}
+
+
+.ftco-section{
+	padding: 7em 0;
+}
+
+.ftco-no-pt{
+	padding-top: 0;
+}
+.ftco-no-pb{
+	padding-bottom: 0;
+}
+//HEADING SECTION
+.heading-section{
+	font-size: 32px;
+
+	small{
+		font-size: 16px;
+		
+	}
+}
+.pos-card{
+  position: relative;
+  right: -120px;
+  top: 25px;
+	width: 65%;
+}
+
+.btn.btn-primary {
+  background: #ec8f6a;
+  border-color: #ec8f6a;
+  color: #fff;
+}
+
+.btn {
+	padding: 4px 8px;
+	cursor: pointer;
+	border-width: 1px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: 500;
+	-webkit-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
+	-moz-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
+	box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
+	overflow: hidden;
+	position: relative;
+	@include transition(.3s);
+	span{
+		margin-left: -20px;
+		@include transition(.3s);
+	}
+	&:hover, &:active, &:focus {
+		outline: none !important;
+		span{
+			margin-left: -10px;
+		}
+	}
+	small{
+		background: lighten($black,90%);
+		padding: 2px 8px;
+		color: rgba(0,0,0,.3);
+	}
+	.icon{
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 45px;
+		bottom: 0;
+		background: $white;
+		i{
+			font-size: 20px;
+		}
+		&.icon-round{
+			border-radius: 50%;
+		}
+	}
+	&.btn-primary {
+		background: $primary;
+		border-color: $primary;
+		color: $white;
+		&:hover,&:focus{
+			border-color: darken($primary,10%) !important;
+			background: darken($primary,10%) !important;
+		}
+		&.btn-link{
+			background: transparent;
+			color: $white;
+			border:none;
+			box-shadow: none;
+		}
+		.icon{
+			i{
+				color: $primary;
+			}
+		}
+	}
+	&.btn-outline-primary{
+		color: $primary;
+		border-color: $primary;
+		&:hover, &:focus{
+			color: $white;
+			background: $primary;
+		}
+	}
+	&.btn-secondary{
+		color: $white;
+		border-color: $secondary;
+		background: $secondary;
+		&:hover,&:focus{
+			border-color: darken($secondary,10%) !important;
+			background: darken($secondary,10%) !important;
+		}
+		&.btn-link{
+			color: $secondary;
+			background: transparent;
+		}
+		.icon{
+			i{
+				color: $secondary;
+			}
+		}
+	}
+	&.btn-outline-secondary{
+		color: $secondary;
+		border-color: $secondary;
+		&:hover, &:focus{
+			color: $white;
+			background: $secondary;
+		}
+	}
+	&.btn-tertiary{
+		color: $white;
+		background: $tertiary;
+		border-color: $tertiary;
+		&:hover,&:focus{
+			border-color: darken($tertiary,10%) !important;
+			background: darken($tertiary,10%) !important;
+		}
+		&.btn-link{
+			color: $tertiary;
+			background: transparent;
+		}
+		.icon{
+			i{
+				color: $tertiary;
+			}
+		}
+	}
+	&.btn-outline-tertiary{
+		color: $tertiary;
+		border-color: $tertiary;
+		&:hover, &:focus{
+			color: $white;
+			background: $tertiary;
+		}
+	}
+	&.btn-quarternary{
+		color: $white;
+		border-color: $quarternary;
+		background: $quarternary;
+		&:hover,&:focus{
+			border-color: darken($quarternary,10%) !important;
+			background: darken($quarternary,10%) !important;
+		}
+		&.btn-link{
+			color: $quarternary;
+			background: transparent;
+		}
+		.icon{
+			i{
+				color: $quarternary;
+			}
+		}
+	}
+	&.btn-outline-quarternary{
+		color: $quarternary;
+		border-color: $quarternary;
+		&:hover, &:focus{
+			color: $white;
+			background: $quarternary;
+		}
+	}
+	&.btn-white {
+		background: $white;
+		border-color: $white;
+		color: $black;
+	}
+	&.btn-round{
+		@include border-radius(40px);
+	}
+	&.btn-link{
+		border:none;
+		box-shadow: none;
+		color: $black;
+	}
+	//SIZE
+	&.btn-sm{
+		padding: 5px 20px;
+		font-size: 12px;
+	}
+	&.btn-lg{
+		padding: 17px 24px;
+		font-size: 16px;
+	}
+}
