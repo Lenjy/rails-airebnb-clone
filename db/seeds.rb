@@ -211,7 +211,7 @@ Category.create(name: "Bottines")
 puts "Created #{Category.all.size} categories from seeds.rb"
 
 basil = User.create(first_name: "Basil", last_name: "Lizotte", address: "4 rue Victor Masse", telephone_number: "0675674509", email: "basil.lizotte@gmail.com", password: "Lewagon 2021", password_confirmation: "Lewagon 2021")
-arthur = User.create(first_name: "Arthur", last_name: "Manguin", address: "20 rue Victor Masse", telephone_number: "0675674512", email: "arthur@gmail.com", password: "Lewagon 2021", password_confirmation: "Lewagon 2021")
+arthur = User.create(first_name: "Arthur", last_name: "Maguin", address: "20 rue Victor Masse", telephone_number: "0675674512", email: "arthur@gmail.com", password: "Lewagon 2021", password_confirmation: "Lewagon 2021")
 
 
 photo_basil = URI.open('https://media-exp1.licdn.com/dms/image/C4E03AQE3w6qncy7Plw/profile-displayphoto-shrink_400_400/0/1620132183102?e=1626912000&v=beta&t=SAQo11fB-mb9HerJn-MjDj96KS6ozEEMJRVnEyLUZrU')
@@ -487,32 +487,33 @@ puts "Attached #{Shoe.all.size} photos on shoes"
 
 basil_location = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
 basil_location.shoe = fish
-basil_location.user = arthur
+basil_location.user = basil
 basil_location.location_pricing = basil_location.shoe.daily_pricing * (basil_location.date_end - basil_location.date_beginning).to_i
 basil_location.save
 
 
 basil_location_two = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
 basil_location_two.shoe = nature
-basil_location_two.user = arthur
+basil_location_two.user = basil
 basil_location_two.location_pricing = basil_location_two.shoe.daily_pricing * (basil_location_two.date_end - basil_location_two.date_beginning).to_i
 basil_location_two.save
 
 artur_location = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
 artur_location.shoe = sabot
-artur_location.user = basil
+artur_location.user = arthur
 artur_location.location_pricing = artur_location.shoe.daily_pricing * (artur_location.date_end - artur_location.date_beginning).to_i
 artur_location.save
 
 artur_location_two = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
 artur_location_two.shoe = tennis
-artur_location_two.user = basil
+artur_location_two.user = arthur
+artur_location_two.accepted_status = true
 artur_location_two.location_pricing = artur_location_two.shoe.daily_pricing * (artur_location_two.date_end - artur_location_two.date_beginning).to_i
 artur_location_two.save
 
 arthur_loc_tree = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
 arthur_loc_tree.shoe = tongsandwish
-arthur_loc_tree.user = basil
+arthur_loc_tree.user = arthur
 arthur_loc_tree.location_pricing = arthur_loc_tree.shoe.daily_pricing * (arthur_loc_tree.date_end - arthur_loc_tree.date_beginning).to_i
 arthur_loc_tree.save
 
