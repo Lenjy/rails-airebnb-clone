@@ -435,8 +435,8 @@ tennis = Shoe.create(
 
 puts "Created #{Shoe.all.size} shoes from seeds.rb"
 
-photo_stan_smith = URI.open('https://images-na.ssl-images-amazon.com/images/I/61Xv%2BIE1vtL._AC_UX500_.jpg')
-stan_smith.photo.attach(io: photo_stan_smith, filename: 'stan_smith.jpg', content_type: 'image/jpg')
+# photo_stan_smith = URI.open('https://images-na.ssl-images-amazon.com/images/I/61Xv%2BIE1vtL._AC_UX500_.jpg')
+# stan_smith.photo.attach(io: photo_stan_smith, filename: 'stan_smith.jpg', content_type: 'image/jpg')
 
 # photo_crocs = URI.open('https://photos6.spartoo.com/photos/359/3594021/3594021_350_A.jpg')
 # crocs.photo.attach(io: photo_crocs, filename: 'crocs.jpg', content_type: 'image/jpg')
@@ -490,6 +490,7 @@ basil_location.shoe = fish
 basil_location.user = arthur
 basil_location.location_pricing = basil_location.shoe.daily_pricing * (basil_location.date_end - basil_location.date_beginning).to_i
 basil_location.save
+
 
 basil_location_two = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
 basil_location_two.shoe = nature

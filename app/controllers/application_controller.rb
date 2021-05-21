@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :count_new_notifs
+
+  before_action :count_new_notifs
+  before_action :notifs
 
   include Pundit
 
@@ -32,13 +34,14 @@ class ApplicationController < ActionController::Base
   end
 
   def count_new_notifs
-    if !current_user.nil?
-      if current_user.locations.count.zero?
-        return @count_new_notifs = 0
-      else
-        return @count_new_notifs = current_user.locations.where(!accepted_status.nil?).count
-      end
+    if current_user
+      return @count_new_notifs = current_user.requests.where(accepted_status: nil).count
     end
   end
 
+  def notifs
+    if current_user
+      return @notifs = current_user.requests.where(accepted_status: nil)
+    end
+  end
 end
