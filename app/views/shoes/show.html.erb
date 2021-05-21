@@ -7,25 +7,25 @@
         <div class="d-flex">
           <div>
             <div class="d-flex">
-              <i class="fas fa-venus-mars"></i>
+              <i class="fas fa-venus-mars text-primary"></i>
               <p>Gender: <%=@shoe.gender%></p>
             </div>
             <div class="d-flex">
-              <i class="fas fa-tags"></i>
+              <i class="fas fa-tags text-primary"></i>
               <p>Brand: <%=@shoe.brand%></p>
             </div>
             <div class="d-flex">
-              <i class="fas fa-copyright"></i>
+              <i class="fas fa-copyright text-primary"></i>
               <p>Model: <%=@shoe.model%></p>
             </div>
           </div>
           <div class="mx-5">
             <div class="d-flex">
-              <i class="fas fa-level-up-alt"></i>
+              <i class="fas fa-level-up-alt text-primary"></i>
               <p>Size: <%=@shoe.shoe_size%></p>
             </div>
             <div class="d-flex">
-              <i class="fas fa-palette"></i>
+              <i class="fas fa-palette text-primary"></i>
               <p>color: <%=@shoe.color%></p>
             </div>
           </div>
@@ -33,7 +33,7 @@
         <p>Description: <%=@shoe.description%></p>
         <% if current_user == @shoe.user %>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-flat mt-2" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModal">
           edit
         </button>
 
@@ -76,7 +76,7 @@
         </div>
         <% end %>
       </div>
-      <h2 class="card-trip-pricing"><%=@shoe.daily_pricing%>€</h2>
+      <h2 class="card-trip-pricing text-primary"><%=@shoe.daily_pricing%>€</h2>
       <%=cl_image_tag @shoe.user.photo.key, {class:"card-trip-user avatar-bordered"} %>
     </div>
   </div>
@@ -89,12 +89,12 @@
           <%= f.input :date_beginning, as: :string, required: false, input_html: {class: "datepicker start"} %>
           <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker end"} %>
           <div class="d-flex justify-content-between">
-            <%= f.submit "Submit", class: "btn btn-flat" %>
+            <%= f.submit "Submit", class: "btn btn-primary" %>
             <div class="d-flex align-items-center">
               <div>
-                <h2 class="mx-2" id="price"></h2>
+                <h2 class="mx-2 text-primary" id="price"></h2>
               </div>
-              <i class="fas fa-sync-alt fa-2x px-2" id="convert"></i>
+              <i class="fas fa-sync-alt fa-2x px-2 text-primary" id="convert"></i>
             </div>
           </div>
         <% end %>
@@ -124,13 +124,13 @@
   <% @shoe.reviews.each do |review| %>
     <div class="my-5">
       <div class="d-flex align-items-center">
-        <i class="fas fa-quote-left fa-3x px-5"></i>
+        <i class="fas fa-quote-left fa-3x px-5 text-primary"></i>
         <h3><%= review.comment %></h3>
-        <i class="fas fa-quote-right fa-3x px-5"></i>
+        <i class="fas fa-quote-right fa-3x px-5 text-primary"></i>
       </div>
       <div class="d-flex mt-3">
         <% review.rating.times do %>
-          <i class="fas fa-star fa-lg"></i>
+          <i class="fas fa-star fa-lg text-primary"></i>
         <% end %>
       </div>
     </div>
