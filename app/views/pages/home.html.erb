@@ -15,7 +15,11 @@
         <span id="banner-typed-text" style="color: white"></span>
       </div>
       <div class= "row justify-content-center mt-4">
-        <%=link_to 'Start searching', shoes_path, class: "btn btn-flat", style: 'margin-bottom: 20px; font-size: 30px; width: auto;'%>
+        <%= link_to '<button type="button" style="padding: 4px 92px" class="btn mb-2 mb-md-0 btn-primary btn-block"><span>SEARCH</span>
+                      <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fas fa-search"></i>
+                      </div>
+                    </button>'.html_safe, shoes_path%>
       </div>
     </div>
 
@@ -31,7 +35,7 @@
   <div class="container justify-content-center d-flex mt-4 lower-home" style="box-shadow: 0 0 15px rgba(0,0,0,0.2);">
     <div class="col-12 col-lg-6">
       <div class="notification">
-        <i class="fas fa-balance-scale-left"></i>
+        <i class="fas fa-balance-scale-left text-primary"></i>
         <div class="notification-content">
           <h2><small>Space saving</small></h2>
           <p>No more shoes in the back of the closet that you never wear! By renting your shoes with Shoes qui can ", save space and make ends meet</p>
@@ -39,7 +43,7 @@
       </div>
 
       <div class="notification">
-        <i class="fas fa-leaf"></i>
+        <i class="fas fa-leaf text-primary"></i>
         <div class="notification-content">
           <h2><small>Eco Friendly</small></h2>
           <p>Produce less consume better! With "Shoes qui peut", you reduce your environmental impact</p>
@@ -53,7 +57,7 @@
           <h2><small>Economy</small></h2>
           <p>Thanks to "Shoes that can", save money! No more compulsive purchases, try your new shoes before adopting them</p>
         </div>
-        <i class="fas fa-hand-holding-usd"></i>
+        <i class="fas fa-hand-holding-usd text-primary"></i>
       </div>
 
       <div class="notification">
@@ -61,7 +65,7 @@
           <h2><small>Change your life, Change your shoes</small></h2>
           <p>A special occasion? Want to change your style? Rent your shoes for every occasion</p>
         </div>
-        <i class="fas fa-dice"></i>
+        <i class="fas fa-dice text-primary"></i>
       </div>
     </div>
 
