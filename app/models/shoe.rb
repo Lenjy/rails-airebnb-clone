@@ -3,7 +3,7 @@ class Shoe < ApplicationRecord
   GENDERS = ["Male", "Female", "For both"]
 
   belongs_to :user
-  has_many :locations
+  has_many :locations, dependent: :destroy
   has_many :reviews
   has_many :categories, through: :link_to_cats
   has_one_attached :photo

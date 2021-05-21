@@ -13,11 +13,11 @@ class ShoesController < ApplicationController
       @shoes = policy_scope(Shoe).where(sql_query, query: "%#{params[:query]}%")
     else
       @shoes = policy_scope(Shoe).order(created_at: :desc)
-    end 
+    end
 
     if params[:shoe_size].present?
       @shoes = @shoes.where(shoe_size: params[:shoe_size])
-    end 
+    end
   end
 
   def show
@@ -53,7 +53,7 @@ class ShoesController < ApplicationController
 
   def destroy
     @shoe.destroy
-    redirect_to shoes_path
+    redirect_to dashboard_index_path
   end
 
   private
