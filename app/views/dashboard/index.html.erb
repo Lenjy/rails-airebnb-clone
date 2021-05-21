@@ -57,44 +57,113 @@
           </div>
         </div>
       </div>
-      <hr>
-      <div class="d-flex show col-md-auto col-md-auto">
-        <div class="col-6 m-3">
-          <h3 class="text-center col-categ">My inventory</h3>
-          <div>
-            <% current_user.shoes.each do |shoe| %>
-            <div class="card-product mb-2">
-              <% if shoe.photo.attached?  %>
-                <%= cl_image_tag shoe.photo.key, height: 300, width: 400, crop: :fill %>
-              <% else %>
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-              <% end %>
-              <div class="card-product-infos">
-                <h2><%= shoe.title %></h2>
-                <p><%= shoe.description %></p>
-              </div>
-            </div>
-            <% end %>
-          </div>
-        </div>
-        
-        <div class=" col-6 m-3">
-          <h3 class="text-center col-categ">Location Request</h3>
-          <div>
 
-            <% @locations.each do |location| %>
-            <div class="card-product mb-2">
-                <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>        
-              <div class="card-product-infos">
-                <h2><%= location.shoe.title %></h2>
-                <p><%= location.shoe.description %></p>
-              </div>
+       <div class="d-block show col-md-auto col-md-auto">
+        <ul class="nav nav-tabs user-tasks-navbar" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link user-tasks-navbar-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Inventory</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests received</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Requests sent</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div>
+              <% current_user.shoes.each do |shoe| %>
+                <div class="card-product mb-2">
+                  <% if shoe.photo.attached?  %>
+                    <%= cl_image_tag shoe.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% else %>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                  <% end %>
+                  <div class="card-product-infos">
+                    <h2><%= shoe.title %></h2>
+                    <p><%= shoe.description %></p>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <% end %>
           </div>
+
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div>
+              <% @location_requests_received.each do |location| %>
+                <% if location.accepted_status == nil %>
+                  <div class="card-product mb-2">
+                    <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
+                    <div class="card-product-infos">
+                      <h2><%= location.shoe.title %></h2>
+                      <p><%= location.shoe.description %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
+                      <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
+                      <div class="d-flex justify-content-end mt-2">
+                        <%= link_to 'Accept', location_path(location, status: true), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-flat
+                        " %>
+                        <%= link_to 'Decline', location_path(location, status: false), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link" %>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="card-product mb-2">
+                    <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
+                    <div class="card-product-infos" style="filter: blur(4px)">
+                      <h2><%= location.shoe.title %></h2>
+                      <p><%= location.shoe.description %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
+                      <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
+                    </div>
+                  </div>
+                  <% if location.accepted_status == true %>
+                    <h1 style="color: rgb(40, 167, 68); position: absolute; top: 193px; left: 206px;">Accepted !</h1>
+                  <% else %>
+                    <h1 style="color: rgb(221, 52, 68); position: absolute; top: 193px; left: 206px;">Declined !</h1>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div>
+              <% @location_requests_sent.each do |location| %>
+                <% if location.accepted_status == nil %>
+                  <div class="card-product mb-2">
+                    <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
+                    <div class="card-product-infos">
+                      <h2><%= location.shoe.title %></h2>
+                      <p><%= location.shoe.description %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
+                      <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
+                      <div class="d-flex justify-content-end align-items-center mt-2">
+                        <h2>Current status: </h2>
+                        <% if location.accepted_status.nil? %>
+                          <h2 class="btn btn-outline-warning disabled ml-1">Pending</h2>
+                        <% elsif location.accepted_status %>
+                          <h2 class="btn btn-flat disabled ml-1">Accepted</h2>
+                        <% else %>
+                          <h2 class="btn btn-warning disabled ml-1">Declined</h2>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
+
     <div class="col-md-4">
       <div class="form-shoe m-20 p-3">
         <%= simple_form_for([@shoe]) do |f| %>
@@ -117,4 +186,4 @@
       </div>
     </div>
   </div>
-</div>  
+</div>

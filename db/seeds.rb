@@ -323,8 +323,9 @@ louboutin.photo.attach(io: photo_louboutin, filename: 'louboutin.jpg', content_t
 puts "Attached #{Shoe.all.size} photos on shoes"
 
 basil_location = Location.new( date_beginning: Date.new(2021,05,21), date_end: Date.new(2021,05,28))
-basil_location.shoe = new_balance 
+basil_location.shoe = new_balance
 basil_location.user = test_01
+basil_location.location_pricing = basil_location.shoe.daily_pricing * (basil_location.date_end - basil_location.date_beginning).to_i
 basil_location.save
 
 puts "Attached #{Location.all.size} locations"
