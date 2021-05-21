@@ -15,7 +15,8 @@
               <p class="text-secondary mb-1">Description of a shoe's lover</p>
               <%# <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>  %>
               <%# <a class="btn btn-flat" href="#">Edit</a> %>
-              <%= link_to "Edit", edit_user_registration_path(@user), class: "btn btn-flat" %>
+              <%= link_to '<button type="button" class="btn mb-2 mb-md-0 btn-outline-primary btn-block"><span>EDIT</span>
+                    </button>'.html_safe, edit_user_registration_path(@user) %>
             </div>
           </div>
         </div>
@@ -59,14 +60,14 @@
       </div>
 
        <div class="d-block show col-md-auto col-md-auto">
-        <ul class="nav nav-tabs user-tasks-navbar" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
+        <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist">
+          <li class="nav-item btn-primary" role="presentation">
             <a class="nav-link user-tasks-navbar-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Inventory</a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li class="nav-item btn-primary" role="presentation">
             <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests received</a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li class="nav-item btn-primary" role="presentation">
             <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Requests sent</a>
           </li>
         </ul>
@@ -74,9 +75,10 @@
         <div class="tab-content" id="myTabContent">
 
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div>
+            <div >
               <% current_user.shoes.each do |shoe| %>
-                <div class="card-product mb-2">
+                <%= cl_image_tag shoe.user.photo.key, {class:"avatar-plus"} %>
+                <div class="card-product">
                   <% if shoe.photo.attached?  %>
                     <%= cl_image_tag shoe.photo.key, height: 300, width: 400, crop: :fill %>
                   <% else %>
@@ -98,28 +100,29 @@
             <div>
               <% @location_requests_received.each do |location| %>
                 <% if location.accepted_status == nil %>
+                  <%= cl_image_tag location.user.photo.key, {class:"avatar-plus"} %>
                   <div class="card-product mb-2">
                     <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-product-infos">
                       <h2><%= location.shoe.title %></h2>
                       <p><%= location.shoe.description %></p>
-                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %></p>
                       <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
                       <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
                       <div class="d-flex justify-content-end mt-2">
-                        <%= link_to 'Accept', location_path(location, status: true), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-flat
-                        " %>
-                        <%= link_to 'Decline', location_path(location, status: false), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link" %>
+                        <%= link_to 'Accept', location_path(location, status: true), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-primary" %>
+                        <%= link_to 'Decline', location_path(location, status: false), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link text-primary" %>
                       </div>
                     </div>
                   </div>
                 <% else %>
+                  <%= cl_image_tag location.user.photo.key, {class:"avatar-plus"} %>
                   <div class="card-product mb-2">
                     <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-product-infos" style="filter: blur(4px)">
                       <h2><%= location.shoe.title %></h2>
                       <p><%= location.shoe.description %></p>
-                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %></p>
                       <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
                       <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
                     </div>
@@ -138,18 +141,19 @@
             <div>
               <% @location_requests_sent.each do |location| %>
                 <% if location.accepted_status == nil %>
+                  <%= cl_image_tag location.user.photo.key, {class:"avatar-plus"} %>
                   <div class="card-product mb-2">
                     <%= cl_image_tag location.shoe.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-product-infos">
                       <h2><%= location.shoe.title %></h2>
                       <p><%= location.shoe.description %></p>
-                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %>    <%=cl_image_tag location.user.photo.key, {id:"avatar-bordered-small"} %></p>
+                      <p><strong>Requester: </strong><%= location.user.first_name %> <%= location.user.last_name %></p>
                       <p><strong>Modalities: </strong><%= (location.date_end-location.date_beginning).to_i %> days from <%= location.date_beginning %> to <%= location.date_end %></p>
                       <p><strong>Total price: </strong><%= location.location_pricing %> €</p>
                       <div class="d-flex justify-content-end align-items-center mt-2">
                         <h2>Current status: </h2>
                         <% if location.accepted_status.nil? %>
-                          <h2 class="btn btn-outline-warning disabled ml-1">Pending</h2>
+                          <h2 class="btn btn-outline-primary disabled ml-1">Pending</h2>
                         <% elsif location.accepted_status %>
                           <h2 class="btn btn-flat disabled ml-1">Accepted</h2>
                         <% else %>
@@ -172,19 +176,25 @@
         <%= simple_form_for([@shoe]) do |f| %>
           <%= f.input :title %>
           <%= f.input :description %>
-          <%= f.input :brand %>
-          <%= f.input :model %>
+          <div class="d-flex">
+            <%= f.input :brand %>
+            <%= f.input :model %>
+          </div>
+          <div class="d-flex">
           <%= f.input :color %>
+          <%= f.input :daily_pricing, as: :integer %>
+          </div>
           <%= f.input :purchasing_date, as: :date, start_year: Date.today.year - 15,
                                 end_year: Date.today.year - 1, discard_day: true,
                                 order: [:month, :year] %>
-          <%= f.input :daily_pricing, as: :integer %>
+          <div class="d-flex">
           <%= f.input :shoe_size, collection: Shoe::SHOE_SIZES, prompt: "choose a size" %>
           <%= f.input :gender, collection: Shoe::GENDERS, prompt: "Choose a gender"  %>
-          <%= f.input :photo, as: :file %>
+          </div>
+          <%= f.input :photo, class:"btn mb-2 mb-md-0 btn-outline-primary btn-block", as: :file %>
           <%# <%= f.input :categories, :collection => @categories %>
           <%# collection: Category.all, prompt: "Choose a category" %>
-          <%= f.button :submit, class: "btn btn-flat" %>
+          <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
