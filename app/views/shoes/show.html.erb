@@ -92,12 +92,12 @@
                   <%= f.input :date_beginning, as: :string, required: false, input_html: {class: "datepicker start"} %>
                   <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker end"} %>
                   <div class="d-flex justify-content-between">
-                    <%= f.submit "Submit", class: "btn btn-flat" %>
+                    <%= f.submit "Submit", class: "btn btn-primary" %>
                     <div class="d-flex align-items-center">
                       <div>
-                        <h2 class="mx-2" id="price"></h2>
+                        <h2 class="mx-2 text-primary" id="price"></h2>
                       </div>
-                      <i class="fas fa-sync-alt fa-2x px-2" id="convert"></i>
+                      <i class="fas fa-sync-alt fa-2x px-2 text-primary" id="convert"></i>
                     </div>
                   </div>
                 <% end %>
@@ -113,7 +113,7 @@
               <%= simple_form_for [ @shoe, @review ] do |f| %>
                 <%= f.input :rating %>
                 <%= f.input :comment %>
-                <%= f.submit "Submit review", class: "btn btn-flat" %>
+                <%= f.submit "Submit review", class: "btn btn-primary" %>
               <% end %>
             </div>
         <% end %>
@@ -121,57 +121,39 @@
   </div>
 </div>
 
+<div class="container">
+  <p><%= link_to 'Back', shoes_path %>
+  </p>
+</div>
 
 
-       <!-- Review listing -->
-  <div class="container">
-    <div class="row">
-      <% @shoe.reviews.each do |review| %>
-      <div class="col-6 h-25%">
-        <div class="card-booking">
-          <div class="my-5">
-            <div class="d-flex align-items-center justify-content-around">
-              <i class="fas fa-quote-left fa-3x px-3"></i>
-                <h3 class="comment_font"><%= review.comment %></h3>
-              <i class="fas fa-quote-right fa-3x px-3"></i>
+      <!-- Review listing -->
+<div class="container">
+  <div class="row">
+    <% @shoe.reviews.each do |review| %>
+    <div class="col-6 h-25%">
+      <div class="card-booking-review">
+        <div class="my-5">
+          <div class="d-flex align-items-center justify-content-around">
+            <i class="fas fa-quote-left fa-3x px-3 text-primary"></i>
+              <h3 class="comment_font"><%= review.comment %></h3>
+            <i class="fas fa-quote-right fa-3x px-3 text-primary"></i>
+          </div>
+          <div class="d-flex">
+            <div class="stars d-flex mt-3 align-content-right">
+                <%=cl_image_tag review.user.photo.key, {class: "card-trip-user avatar-bordered-comment", crop: :fill} %>   
             </div>
-            <div class="d-flex">
-              <div class="stars d-flex mt-3 align-content-right">
-                  <%=cl_image_tag review.user.photo.key, {class: "card-trip-user avatar-bordered-comment", crop: :fill} %>   
-              </div>
-              <div class="stars d-flex mt-3 align-content-right">
-                  <% review.rating.times do %>
-                  <i class="fas fa-star fa-lg"></i>
-                  <% end %>
-              </div>
+            <div class="stars d-flex mt-3 align-content-right">
+                <% review.rating.times do %>
+                <i class="fas fa-star fa-lg text-primary"></i>
+                <% end %>
             </div>
           </div>
         </div>
       </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
-
-<div class="container">
-  <p><%= link_to 'Back', shoes_path %>
-  </p>
-
 </div>
 
-<div class="container">
-  <% @shoe.reviews.each do |review| %>
-    <div class="my-5">
-      <div class="d-flex align-items-center">
-        <i class="fas fa-quote-left fa-3x px-5 text-primary"></i>
-        <h3><%= review.comment %></h3>
-        <i class="fas fa-quote-right fa-3x px-5 text-primary"></i>
-      </div>
-      <div class="d-flex mt-3">
-        <% review.rating.times do %>
-          <i class="fas fa-star fa-lg text-primary"></i>
-        <% end %>
-      </div>
-    </div>
-  <% end  %>
-</div>
 
