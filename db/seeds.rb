@@ -238,57 +238,57 @@ puts "Created #{User.all.size} user from seeds.rb"
 # }
 
 
-stan_smith = Shoe.create(
-  user_id: basil.id,
-  title: "Stan smith from the 70s",
-  description: "This shoe is really cool, I bought it in the 1995, it's an old model",
-  brand: "Adidas",
-  model: "Stan Smith",
-  purchasing_date: Date.new(),
-  color: "White",
-  daily_pricing: 3,
-  gender: "For both",
-  shoe_size: 39
-)
+# stan_smith = Shoe.create(
+#   user_id: basil.id,
+#   title: "Stan smith from the 70s",
+#   description: "This shoe is really cool, I bought it in the 1995, it's an old model",
+#   brand: "Adidas",
+#   model: "Stan Smith",
+#   purchasing_date: Date.new(),
+#   color: "White",
+#   daily_pricing: 3,
+#   gender: "For both",
+#   shoe_size: 39
+# )
 
-crocs = Shoe.create(
-  user_id: arthur.id,
-  title: "Fancy crocs for house-cleaning",
-  description: "I love my crocs and want to share them with people",
-  brand: "Crocs",
-  model: "Classic Clog",
-  purchasing_date: Date.new(),
-  color: "Green",
-  daily_pricing: 5,
-  gender: "For both",
-  shoe_size: 43
-)
+# crocs = Shoe.create(
+#   user_id: arthur.id,
+#   title: "Fancy crocs for house-cleaning",
+#   description: "I love my crocs and want to share them with people",
+#   brand: "Crocs",
+#   model: "Classic Clog",
+#   purchasing_date: Date.new(),
+#   color: "Green",
+#   daily_pricing: 5,
+#   gender: "For both",
+#   shoe_size: 43
+# )
 
-clarks = Shoe.create(
-  user_id: basil.id,
-  title: "Trendy Clarks shoes - a bit dirty",
-  description: "Good general condition",
-  brand: "Clarks",
-  model: "Desert boot",
-  purchasing_date: Date.new(),
-  color: "Beige",
-  daily_pricing: 6,
-  gender: "Male",
-  shoe_size: 45
-)
+# clarks = Shoe.create(
+#   user_id: basil.id,
+#   title: "Trendy Clarks shoes - a bit dirty",
+#   description: "Good general condition",
+#   brand: "Clarks",
+#   model: "Desert boot",
+#   purchasing_date: Date.new(),
+#   color: "Beige",
+#   daily_pricing: 6,
+#   gender: "Male",
+#   shoe_size: 45
+# )
 
-louboutin = Shoe.create(
-  user_id: arthur.id,
-  title: "Louboutin",
-  description: "I don't use them every day so I want them to be useful for other poeple",
-  brand: "Louboutin",
-  model: "So Kate 120",
-  purchasing_date: Date.new(),
-  color: "Black",
-  daily_pricing: 4,
-  gender: "Female",
-  shoe_size: 38
-)
+# louboutin = Shoe.create(
+#   user_id: arthur.id,
+#   title: "Louboutin",
+#   description: "I don't use them every day so I want them to be useful for other poeple",
+#   brand: "Louboutin",
+#   model: "So Kate 120",
+#   purchasing_date: Date.new(),
+#   color: "Black",
+#   daily_pricing: 4,
+#   gender: "Female",
+#   shoe_size: 38
+# )
 
 crocspink = Shoe.create(
   user_id: basil.id,
@@ -438,14 +438,14 @@ puts "Created #{Shoe.all.size} shoes from seeds.rb"
 photo_stan_smith = URI.open('https://images-na.ssl-images-amazon.com/images/I/61Xv%2BIE1vtL._AC_UX500_.jpg')
 stan_smith.photo.attach(io: photo_stan_smith, filename: 'stan_smith.jpg', content_type: 'image/jpg')
 
-photo_crocs = URI.open('https://photos6.spartoo.com/photos/359/3594021/3594021_350_A.jpg')
-crocs.photo.attach(io: photo_crocs, filename: 'crocs.jpg', content_type: 'image/jpg')
+# photo_crocs = URI.open('https://photos6.spartoo.com/photos/359/3594021/3594021_350_A.jpg')
+# crocs.photo.attach(io: photo_crocs, filename: 'crocs.jpg', content_type: 'image/jpg')
 
-photo_clarks = URI.open('https://www.commeuncamion.com/content/uploads/2017/02/comparatif-desert-boots-Clarks-porte.jpg')
-clarks.photo.attach(io: photo_clarks, filename: 'clarks.jpg', content_type: 'image/jpg')
+# photo_clarks = URI.open('https://www.commeuncamion.com/content/uploads/2017/02/comparatif-desert-boots-Clarks-porte.jpg')
+# clarks.photo.attach(io: photo_clarks, filename: 'clarks.jpg', content_type: 'image/jpg')
 
-photo_louboutin = URI.open('https://static-eu.christianlouboutin.com/media/catalog/product/cache/50910a554f402a7e962c16653ab289e4/3/1/3130694bk01-3130694bk01-main_image-ecommerce-christianlouboutin-sokate-3130694_bk01_1_1200x1200.jpg')
-louboutin.photo.attach(io: photo_louboutin, filename: 'louboutin.jpg', content_type: 'image/jpg')
+# photo_louboutin = URI.open('https://static-eu.christianlouboutin.com/media/catalog/product/cache/50910a554f402a7e962c16653ab289e4/3/1/3130694bk01-3130694bk01-main_image-ecommerce-christianlouboutin-sokate-3130694_bk01_1_1200x1200.jpg')
+# louboutin.photo.attach(io: photo_louboutin, filename: 'louboutin.jpg', content_type: 'image/jpg')
 
 photo_crocspink = URI.open('http://www.chaussures-collector.com/wp-content/uploads/2013/03/2624157_chaussure-moche.jpeg')
 crocspink.photo.attach(io: photo_crocspink, filename: 'crocspink.jpg', content_type: 'image/jpg')
